@@ -1,3 +1,33 @@
+:root {
+
+/* colours */
+--background :rgb(244, 241, 234);
+--text-background: rgb(255, 213, 202);
+--primary-blue:rgb(35, 64, 217);
+--primary-Orange:rgb(255, 91, 58);
+--primary-yellow:rgb(246, 226, 122);
+--primary-pink:rgb(255, 214, 224);
+--primary-black: rgb(27, 27, 27);
+--title-white: rgb(25, 25, 25);
+--strike-red:rgb(225, 37, 27);
+/* Typeface */
+--heading-typeface:'Anton';
+--body-text-typeface:'DM Sans',sans-serif;
+--number-typeface:'BricolageGrotesque';
+--metadata-typeface: 'DM Sans';
+--accent-typeface:'permanent marker';
+/* Textsize */
+--basetext:0.5rem ;
+--bodytext: calc(2*var(--basetext));
+--numbertext:calc(3* var(--basetext));
+--metadata:calc(2*var(var(--bodytext));
+--
+
+
+}
+
+
+
 em {
 	font-style: italic;
 }
