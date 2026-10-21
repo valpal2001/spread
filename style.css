@@ -20,8 +20,32 @@
 --basetext:0.5rem ;
 --bodytext: calc(2*var(--basetext));
 --numbertext:calc(3* var(--basetext));
---metadata:calc(2*var(var(--bodytext));
---
+--metadata:calc(2*var(--bodytext));
+--accent-body: calc(4*var(--bodytext));
+--accent-header: calc(2*var(--accent-body));
+/* Weight */
+--base-text-weight:100;
+--thin-wt: calc(2*var(--base-text-weight));
+--regular-wt: calc(2*var(--thin-wt));
+--semibold-wt: calc(3*var(--base-text-weight));
+--bold-wt: calc(2*var(--semibold-wt));
+--extrabold-wt: calc(2*var(--bold-wt));
+/* Spacing */
+--base-spacing: var(--basetext);
+--paragraph-spacing:calc(2*var(--base-spacing));
+--section-spacing: calc(2*var(--paragraph-spacing));
+--page-start: calc(2*var(--section-spacing));
+--content-indent: var(--paragraph-spacing);
+--content-end: var(--content-indent);
+/* leading */
+--regular-leading: calc(2*var(--basetext));
+--tight-leading: var(--regular-leading)/1.5);
+--relaxed-leading: calc(2*var(--regular-leading));
+--loose-leading: calc(2*var(--relaxed-leading));
+--extraloose-leading: calc(2*var(--loose-leading));
+
+
+
 
 
 }
