@@ -43,13 +43,7 @@
 --relaxed-leading: calc(2*var(--regular-leading));
 --loose-leading: calc(2*var(--relaxed-leading));
 --extraloose-leading: calc(2*var(--loose-leading));
-
-
-
-
-
 }
-
 
 
 em {
@@ -59,6 +53,21 @@ strong {
 	font-weight: 700;
 }
 
-.number{}
-.header{}
-.paragraph{}
+.introduction .essay-number,
+.introduction .essay-title {
+  background: var(--orange);
+  color: var(--text-background);
+
+.essay {
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  color: var(--text-background);
+  font-family: "DM Sans", sans-serif;
+}
+
+.introduction .essay-title {
+  font-family: inherit;
+  font-weight: 700;
+  align-items: flex-start;
+}
