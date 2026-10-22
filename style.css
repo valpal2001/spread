@@ -13,11 +13,11 @@
 --title-white: rgb(255, 255, 255);
 --strike-red:rgb(225, 37, 27);
 /* Typeface */
---heading-typeface:'Anton';
+--heading-typeface:'Anton',sans-serif;
 --primary-typeface:'DM Sans',sans-serif;
---secondary-typeface:'Bricolage Grotesque';
---metadata-typeface: 'DM Sans';
---accent-typeface:'permanent marker';
+--secondary-typeface:'Bricolage Grotesque',sans-serif;
+--metadata-typeface: 'DM Sans' sans-serif;
+--accent-typeface:'permanent marker', cursive;
 /* Textsize */ /*working on the magic numbers aspect here and other parts of this sheet*/
 --basetext:0.5rem ;
 --bodytext: calc(2*var(--basetext));
