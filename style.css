@@ -8,21 +8,22 @@
 --primary-yellow:rgb(246, 226, 122);
 --primary-pink:rgb(255, 214, 224);
 --primary-black: rgb(27, 27, 27);
---title-white: rgb(25, 25, 25);
+--title-white: rgb(255, 255, 255);
 --strike-red:rgb(225, 37, 27);
 /* Typeface */
 --heading-typeface:'Anton';
---body-text-typeface:'DM Sans',sans-serif;
---number-typeface:'BricolageGrotesque';
+--primary-typeface:'DM Sans',sans-serif;
+--secondary-typeface:'Bricolage Grotesque';
 --metadata-typeface: 'DM Sans';
 --accent-typeface:'permanent marker';
 /* Textsize */
 --basetext:0.5rem ;
 --bodytext: calc(2*var(--basetext));
---numbertext:calc(3* var(--basetext));
---metadata:calc(2*var(--bodytext));
+--numbertext:calc(4* var(--bodytext));
+--metadata:calc(1.5*var(--bodytext));
+--subheading: var(--metadata);
 --accent-body: calc(4*var(--bodytext));
---accent-header: calc(2*var(--accent-body));
+--accent-header: calc(1.5*var(--accent-body));
 /* Weight */
 --base-text-weight:100;
 --thin-wt: calc(2*var(--base-text-weight));
@@ -33,7 +34,7 @@
 /* Spacing */
 --base-spacing: var(--basetext);
 --paragraph-spacing:calc(2*var(--base-spacing));
---section-spacing: calc(2*var(--paragraph-spacing));
+--section-spacing: calc(2.5*var(--paragraph-spacing));
 --page-start: calc(2*var(--section-spacing));
 --content-indent: var(--paragraph-spacing);
 --content-end: var(--content-indent);
@@ -42,9 +43,132 @@
 --tight-leading: calc(var(--regular-leading)/1.5);
 --relaxed-leading: calc(2*var(--regular-leading));
 --loose-leading: calc(2*var(--relaxed-leading));
---extraloose-leading: calc(2*var(--loose-leading));
+--extraloose-leading: calc(1.5*var(--loose-leading));
+/* Radius */
+--small-radius:2rem;
+--large-radius: calc(2*var(--small-radius));
 }
 
+body {
+	background-color: var(--background);
+	margin-inline-start: var(--content-indent);
+	margin-inline-end: var(--content-end);
+	color: var(--primary-black);
+}
+
+nav details {
+	background-color: var(--title-white);
+	border-radius: var(--small-radius);
+	margin-block-start: var(--page-start);
+	margin-block-end: var(--paragraph-spacing);
+	font-family: var(--primary-typeface);
+	font-size: var(--bodytext);
+}
+
+nav summary {
+	display: flex;
+	justify-content: space-between;
+	/* If our fonts are the same size do we still need to align items? */
+	/* align-items: center; */
+	padding: var(--paragraph-spacing);
+	list-style: none;
+}
+
+/* Main heading */
+.titleblock {
+	background-color: var(--primary-blue);
+	border-radius: var(--small-radius);
+	display: grid;
+	/* justify-content: align; */
+	padding: var(--paragraph-spacing);
+	margin-block-end: var(--paragraph-spacing);
+}
+
+.titlelabel {
+	color: var(--primary-pink);
+	text-transform: uppercase;
+	font-size: var(--basetext);
+	margin-block-start: var(--paragraph-spacing);
+	margin-block-end: var(--section-spacing);
+}
+
+.titleback {
+	color: var(--primary-pink);
+	text-transform: uppercase;
+	font-size: var(--accent-header);
+	font-family: var(--heading-typeface);
+	line-height: var(--extraloose-leading);
+}
+
+h1 {
+	color: var(--primary-Orange);
+	font-family: var(--accent-typeface);
+	font-size: var(--accent-body);
+}
+
+/* Metadata */
+.cards {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--paragraph-spacing);
+}
+
+.cards > div {
+	border-radius: var(--small-radius);
+	padding: var(--paragraph-spacing);
+	align-items: center;
+}
+
+.response {
+	background-color: var(--primary-Orange);
+	grid-column: span 2;
+	font-family: var(--secondary-typeface);
+	font-weight: var(--extrabold-wt);
+	font-size: var(--metadata);
+	/* padding: var(--paragraph-spacing); */
+}
+
+.author {
+	background-color: var(--primary-yellow);
+	font-family: var(--secondary-typeface);
+	font-weight: var(--extrabold-wt);
+}
+
+.codedby {
+	background-color: var(--primary-pink);
+	font-family: var(--primary-typeface);
+}
+
+/* Introduction */
+.essay-introduction .essay-header {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap:var(--paragraph-spacing);
+}
+
+.essay-introduction .essay-number,
+.essay-introduction .essay-subheading {
+	margin-block-start: var(--section-spacing);
+	background-color: var(--primary-Orange);
+	border-radius: var(--small-radius);
+	padding: var(--paragraph-spacing);
+	font-family: var(--secondary-typeface);
+	align-content: center;
+	margin-block-end: var(--paragraph-spacing);
+}
+
+.essay-introduction .essay-number {
+	font-size: var(--numbertext);
+	font-weight: var(--extrabold-wt);
+	grid-column: span 1;
+}
+
+.essay-introduction .essay-subheading {
+	font-size: var(--bodytext);
+	font-weight: var(--bold-wt);
+	font-size: var(--subheading);
+	grid-column: span 2;
+}
 
 em {
 	font-style: italic;
@@ -53,7 +177,7 @@ strong {
 	font-weight: 700;
 }
 
-.introduction .essay-number,
+/* .introduction .essay-number,
 .introduction .essay-title {
   background: var(--orange);
   color: var(--text-background);
@@ -71,4 +195,4 @@ strong {
   font-family: inherit;
   font-weight: 700;
   align-items: flex-start;
-}
+} */

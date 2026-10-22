@@ -12,46 +12,63 @@
 	<body>
 
 		<nav>
-			<ol>
-				<li>
-					<a href="#introduction">01.Introduction</a></li>
-				<li>
-					<a href="#02form">02.Form</a></li>
-				<li>
-					<a href="03content">03.Content</a></li>
-				<li>
-					<a href="04authorship">04.Authorship</a></li>
-				<li>
-					<a href="05propriety">05.Propriety</a></li>
-				<li>
-					<a href="06principles">06.Principles</a></li>
-				<li>
-					<a href="07conclusion">07.Conclusion</a></li>
-			</ol>
+			<details>
+				<!-- Summary is an always visible and clickable tag that hides everything inside till its been clicked -->
+				 <!-- project 2 is also clickable. How can we show them in the same row without both being clickable? -->
+				<summary>
+					<span>Project 2</span>
+					<span>Contents</span>
+				</summary>
+				<ol>
+					<li>
+						<a href="#introduction">01.Introduction</a></li>
+					<li>
+						<a href="#02form">02.Form</a></li>
+					<li>
+						<a href="#03content">03.Content</a></li>
+					<li>
+						<a href="#04authorship">04.Authorship</a></li>
+					<li>
+						<a href="#05propriety">05.Propriety</a></li>
+					<li>
+						<a href="#06principles">06.Principles</a></li>
+					<li>
+						<a href="#07conclusion">07.Conclusion</a></li>
+				</ol>
+			</details>
 		</nav>
 
 		<article>
 			<header>
-				<hgroup>
+				<hgroup class="titleblock">
+					<p class="titlelabel">Essay·2015</p>
 					<h1>Fuck all</h1>
-					<p>Essay·2015</p>
-				<div>
-					<p>In response to</p>
-					<p>Michael Rock's "Fuck Content"<time datetime="2005">(2005)</time></p></div>
-				<div>
-					<p>Kenneth Fitzgerald</p>
-					<p><a href="https://modesofcriticism.org/category/articles/"><cite>Modes of Criticism</cite></a></p></div>
-				<div>
-					<p>By Charitaa B. and Valerie H.</p></div>
+					<p class="titleback">fuck content</p>
 				</hgroup>
+
+				<div class="title cards">
+					<div class="response">
+						<p>In response to</p>
+						<p>Michael Rock's "Fuck Content"<time datetime="2005">(2005)</time></p>
+					</div>
+
+					<div class="author">
+						<p>Kenneth Fitzgerald</p>
+						<p><a href="https://modesofcriticism.org/category/articles/"><cite>Modes of Criticism</cite></a></p>
+					</div>
+
+					<div class="codedby">
+						<p>By Charitaa B. and Valerie H.</p>
+					</div>
+				</div>
 			</header>
 
 			<main>
-				<section class="essay introduction" id="introduction">
+				<section class="essay-introduction" id="introduction">
 
-					 <div class="essay-header">
+					<div class="essay-header">
   						<span class="essay-number">01</span>
-						<h2 class="essay-title">Who writes about design</h2>
+						<h2 class="essay-subheading">Who writes about design</h2>
 					</div>
 
 					<p>The solution most commonly offered for improving or expanding writing about graphic design is to recruit more practitioners to the task. Or, to lure formerly active ones back. Unsurprisingly, it’s almost exclusively <em>other</em> designers that propose these remedies. Discussion quickly turns to methods to inject more money into writing, to offset the robust pay (at least in comparison) that comes from doing design. As a writer myself, I can’t argue against that prospect. But as a reader, offering higher fees for the same unreliable product isn’t an advance.</p>
@@ -74,7 +91,7 @@
 				<section class="essay" id="02-form">
 					<div class="essay-header">
   						<span class="number">02</span>
-    					<h2 class="essay-title">Form as the only content</h2>
+    					<h2 class="essay-subheading">Form as the only content</h2>
   					</div>
 					<p>For profession-based writers, professional practice and “graphic design,” are synonymous. Client-based commercial work is asserted as the graphic designer’s sole legitimate expression. <q>We speak through our assignment,</q> writes designer/educator Michael Rock in <cite>Fuck Content</cite>, a 2005 article revised for the GDNiP catalog (and included in the design studio 2×4’s recent book <cite>Multiple Signatures</cite>). This short essay is intended to be the definitive statement on the essential nature of graphic design. To that end, Rock pronounced a resolution of the <em>“content” vs. “form” </em> dichotomy. Form-making—graphic treatment—is declared as design’s true content. <q>Just as every film is about filmmaking,</q> Rock says, <q>Our content is, perpetually, Design itself.</q> </p>
 
