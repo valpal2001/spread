@@ -140,14 +140,14 @@ h1 {
 }
 
 /* Introduction */
-.essay-introduction .essay-header {
+.essay-subsection .essay-header {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	gap:var(--paragraph-spacing);
 }
 
-.essay-introduction .essay-number,
-.essay-introduction .essay-subheading {
+.essay-subsection .essay-number,
+.essay-subsection .essay-subheading {
 	margin-block-start: var(--section-spacing);
 	background-color: var(--primary-Orange);
 	border-radius: var(--small-radius);
@@ -157,13 +157,13 @@ h1 {
 	margin-block-end: var(--paragraph-spacing);
 }
 
-.essay-introduction .essay-number {
+.essay-subsection .essay-number {
 	font-size: var(--numbertext);
 	font-weight: var(--extrabold-wt);
 	grid-column: span 1;
 }
 
-.essay-introduction .essay-subheading {
+.essay-subsection .essay-subheading {
 	font-size: var(--bodytext);
 	font-weight: var(--bold-wt);
 	font-size: var(--subheading);
