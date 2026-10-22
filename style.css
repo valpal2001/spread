@@ -246,6 +246,7 @@ strong {
 		flex-direction: column;
 		flex-grow: 1;
 		flex-basis: 0;
+		/* this is where i learned about how to make the cards the right width: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-basis*/
 	}
 }
 
