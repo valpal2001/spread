@@ -28,12 +28,12 @@
 --accent-body: calc(4*var(--bodytext));
 --accent-header: calc(1.5*var(--accent-body));
 /* Weight */
---base-text-weight:100;
---thin-wt: 200;
---regular-wt: 400;
---semibold-wt: 600;
---bold-wt: 700;
---extrabold-wt: 800;
+--base-weight:100;
+--thin-wt: calc(2*var(--base-weight));
+--regular-wt: calc(2*var(--thin-wt));
+--semibold-wt: calc(2*var(--regular-wt));
+--bold-wt: calc(2*var(--semibold-wt));
+--extrabold-wt: calc(2*var(--bold-wt));
 /*--thin-wt: calc(2*var(--base-text-weight));
 --regular-wt: calc(2*var(--thin-wt));
 --semibold-wt: calc(3*var(--base-text-weight));
@@ -71,7 +71,7 @@ body {
 nav details {
 	background-color: var(--title-white);
 	border-radius: var(--small-radius);
-	margin-block-start: var(--page-start);
+	margin-block-start: var(--section-spacing);
 	margin-block-end: var(--paragraph-spacing);
 	font-family: var(--primary-typeface);
 	font-size: var(--bodytext);
@@ -117,6 +117,13 @@ h1 {
 	font-family: var(--accent-typeface);
 	font-size: var(--accent-body);
 }
+
+h3 {
+	font-family: var(--secondary-typeface);
+	color: var(--primary-blue);
+	font-size: var(--accent-body);
+}
+
 
 /* Metadata */
 .titlecards {
@@ -184,8 +191,11 @@ h1 {
 }
 
 .pullquote {
-	background-color: var(--primary-blue);
-	color:var(--title-white);
+	/* background-color: var(--title-white); */
+	border-color: var(--primary-blue);
+	border-width: calc(var(--basetext)/2);
+	border-style: solid;
+	color:var(--primary-black);
 	padding: var(--paragraph-spacing);
 	border-radius: var(--small-radius);
 	margin-block-start: var(--paragraph-spacing);
