@@ -21,6 +21,7 @@
 --bodytext: calc(2*var(--basetext));
 --numbertext:calc(4* var(--bodytext));
 --metadata:calc(1.5*var(--bodytext));
+--quotations: var(--metadata);
 --subheading: var(--metadata);
 --accent-body: calc(4*var(--bodytext));
 --accent-header: calc(1.5*var(--accent-body));
@@ -61,6 +62,7 @@ body {
 	margin-inline-start: var(--content-indent);
 	margin-inline-end: var(--content-end);
 	color: var(--primary-black);
+	font-family: var(--primary-typeface);
 }
 
 nav details {
@@ -135,7 +137,7 @@ h1 {
 	/* padding: var(--paragraph-spacing); */
 }
 
-.author {
+.authorheading {
 	background-color: var(--primary-yellow);
 	font-family: var(--secondary-typeface);
 	font-weight: var(--extrabold-wt);
@@ -224,5 +226,5 @@ em {
 	font-style: italic;
 }
 strong {
-	font-weight: 700;
+	font-weight: var(--bold-wt);
 }
