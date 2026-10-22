@@ -5,8 +5,7 @@ https://www.markdownguide.org/cheat-sheet/
 
 # Project 2: *Spread*
 
-Demo/template for our [second projects](https://typography-interaction-2627.github.io/project/2/).
+Here is the link to Charitaa's Chat log: https://chatgpt.com/share/6ada6627-0cc4-83e9-9c77-fa31dc50a0aa
 
-> **Students will now work together—with a new reading from those selected by the class in [*Manuscript*](https://typography-interaction-2627.github.io/project/1/)—to express a text deliberately and consistently across devices.**
->
-> The goal of this project is twofold: both an effective *collaboration* between partners and also a successful, *responsive* design. Each duo will sketch cooperatively and then implement a joint execution together, via pair programming. The final web page will be responsive for mobile, desktop, and print layouts.
+Here is the link to Valerie's Claude chat log: https://claude.ai/share/d9b63640-a0b2-4bf9-8f89-7f910eec6289
+
