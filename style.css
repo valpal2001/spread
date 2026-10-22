@@ -18,7 +18,7 @@
 --secondary-typeface:'Bricolage Grotesque';
 --metadata-typeface: 'DM Sans';
 --accent-typeface:'permanent marker';
-/* Textsize */
+/* Textsize */ /*working on the magic numbers aspect here and other parts of this sheet*/
 --basetext:0.5rem ;
 --bodytext: calc(2*var(--basetext));
 --numbertext:calc(4* var(--bodytext));
