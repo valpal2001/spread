@@ -39,7 +39,7 @@
 --content-end: var(--content-indent);
 /* leading */
 --regular-leading: calc(2*var(--basetext));
---tight-leading: var(--regular-leading)/1.5);
+--tight-leading: calc(var(--regular-leading)/1.5);
 --relaxed-leading: calc(2*var(--regular-leading));
 --loose-leading: calc(2*var(--relaxed-leading));
 --extraloose-leading: calc(2*var(--loose-leading));
@@ -57,6 +57,7 @@ strong {
 .introduction .essay-title {
   background: var(--orange);
   color: var(--text-background);
+}
 
 .essay {
   display: flex;
