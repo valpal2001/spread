@@ -116,13 +116,13 @@ h1 {
 }
 
 /* Metadata */
-.cards {
+.titlecards {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: var(--paragraph-spacing);
 }
 
-.cards > div {
+.titlecards > div {
 	border-radius: var(--small-radius);
 	padding: var(--paragraph-spacing);
 	align-items: center;
@@ -149,9 +149,6 @@ h1 {
 	font-family: var(--primary-typeface);
 }
 
-p {
-
-}
 /* Introduction */
 .essay-subsection .essay-header {
 	display: grid;
@@ -201,16 +198,17 @@ p {
 	margin-block-end: var(--paragraph-spacing);
 }
 
-.blue-header .essay-number,
+/* This is to change the colours of the subheading blocks */
+/* .blue-header .essay-number,
 .blue-header .essay-subheading {
 	background-color: var(--primary-blue);
 	color: var(--title-white);
-}
+} */
 
-.blue-header .essay-subheading {
+/* .blue-header .essay-subheading {
 	font-family: var(--accent-typeface);
 	text-transform: uppercase;
-}
+} */
 
 .essay-subsection > p {
 	background-color: var(--text-background);
