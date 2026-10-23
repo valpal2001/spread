@@ -17,7 +17,7 @@
 --primary-typeface:'DM Sans',sans-serif;
 --secondary-typeface:'Bricolage Grotesque',sans-serif;
 --metadata-typeface: 'DM Sans' sans-serif;
---accent-typeface:'permanent marker', cursive;
+--accent-typeface:'Permanent Marker', cursive;
 /* Textsize */ /*working on the magic numbers aspect here and other parts of this sheet*/
 --basetext:0.5rem ;
 --bodytextsml: calc(1.5*var(--basetext));
@@ -262,16 +262,30 @@ a {
 }
 
 /* This is to change the colours of the subheading blocks */
-/* .blue-header .essay-number,
+ .blue-header .essay-number,
 .blue-header .essay-subheading {
 	background-color: var(--primary-blue);
 	color: var(--primary-white);
-} */
+}
 
-/* .blue-header .essay-subheading {
+.yellow-header .essay-number,
+.yellow-header .essay-subheading {
+	background-color: var(--primary-yellow);
+	color: var(--primary-black);
+}
+
+.orange-header .essay-number,
+.orange-header .essay-subheading {
+	background-color: var(--primary-orange);
+	color: var(--primary-black);
+}
+
+.blue-header .essay-subheading,
+.yellow-header .essay-subheading,
+.orange-header .essay-subheading {
 	font-family: var(--accent-typeface);
 	text-transform: uppercase;
-} */
+}
 
 .essay-subsection > p {
 	background-color: var(--text-background);
@@ -282,6 +296,70 @@ a {
 	font-size: var(--bodytext-lrg);
 	line-height: calc(1.5*var(--regular-leading));
 }
+
+/*strikethrough block*/
+.strikeblock {
+	display: grid;
+	justify-items: center;
+	gap: var(--paragraph-spacing);
+	margin-block-start: var(--section-spacing);
+	margin-block-end: var(--section-spacing);
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.strikeblock del {
+	position: relative;
+	display: inline-block;
+	text-decoration: none; /* removes the browser's default line-through so we can draw our own */
+	font-family: var(--heading-typeface);
+	color: var(--primary-blue);
+	font-size: var(--metadata);
+	line-height: var(--loose-leading);
+
+	@media (min-width: 768px) {
+		font-size: var(--accent-header);
+		line-height: var(--extraloose-leading);
+	}
+}
+
+/* the red strike line */ /*I asked chat (linked in readme file) and used this site to learn clamp to scale text proportionally as you move screen sizes: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/clamp*/
+.strikeblock del {
+	position: relative;
+	display: inline-block;
+	white-space: nowrap;
+	text-box: trim-both cap alphabetic;
+	text-decoration: none;
+	font-family: var(--heading-typeface);
+	color: var(--primary-blue);
+	font-size: clamp(var(--metadata), 8vw, var(--accent-header));
+}
+
+
+.strikeblock del::after {
+	content: "";
+	position: absolute;
+	inset-inline-start: calc(-1 * var(--basetext));
+	inset-inline-end: calc(-1 * var(--basetext));
+	inset-block-start: 50%;
+	block-size: var(--basetext);
+	background-color: var(--strike-red);
+	rotate: -1deg;
+}
+
+.strikeblock ins {
+	display: inline-block;
+	text-box: trim-both cap alphabetic;
+	text-decoration: none;
+	font-family: var(--accent-typeface);
+	color: var(--primary-orange);
+	font-size: clamp(var(--subheading), 5vw, var(--accent-body));
+}
+
+	@media (min-width: 768px) {
+		font-size: var(--accent-body);
+	}
+
 
 em {
 	font-style: italic;
