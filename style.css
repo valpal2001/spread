@@ -10,7 +10,7 @@
 --primary-yellow:rgb(246, 226, 122);
 --primary-pink:rgb(255, 214, 224);
 --primary-black: rgb(27, 27, 27);
---title-white: rgb(255, 255, 255);
+--primary-white: rgb(255, 255, 255);
 --strike-red:rgb(225, 37, 27);
 /* Typeface */
 --heading-typeface:'Anton',sans-serif;
@@ -20,13 +20,15 @@
 --accent-typeface:'permanent marker', cursive;
 /* Textsize */ /*working on the magic numbers aspect here and other parts of this sheet*/
 --basetext:0.5rem ;
---bodytext: calc(2*var(--basetext));
---numbertext:calc(4* var(--bodytext));
---metadata:calc(1.5*var(--bodytext));
+--bodytextsml: calc(1.5*var(--basetext));
+--bodytext-lrg: calc(2*var(--basetext));
+--metadata:calc(1.5*var(--bodytext-lrg));
+--numbertext:calc(3* var(--metadata));
 --quotations: var(--metadata);
 --subheading: var(--metadata);
---accent-body: calc(4*var(--bodytext));
+--accent-body: calc(4*var(--bodytext-lrg));
 --accent-header: calc(1.5*var(--accent-body));
+
 /* Weight */
 --base-weight:100;
 --thin-wt: calc(2*var(--base-weight));
@@ -34,20 +36,15 @@
 --semibold-wt: calc(2*var(--regular-wt));
 --bold-wt: calc(2*var(--semibold-wt));
 --extrabold-wt: calc(2*var(--bold-wt));
-/*--thin-wt: calc(2*var(--base-text-weight));
---regular-wt: calc(2*var(--thin-wt));
---semibold-wt: calc(3*var(--base-text-weight));
---bold-wt: calc(2*var(--semibold-wt));
---extrabold-wt: calc(2*var(--bold-wt));
-does it have to be in var? if so how to adjust the math here*/
 
 /* Spacing */
 --base-spacing: var(--basetext);
 --paragraph-spacing:calc(2*var(--base-spacing));
 --section-spacing: calc(2.5*var(--paragraph-spacing));
---page-start: calc(2*var(--section-spacing));
+/* --page-start: calc(2*var(--section-spacing)); */
 --content-indent: var(--paragraph-spacing);
 --content-end: var(--content-indent);
+
 /* leading */
 --regular-leading: calc(2*var(--basetext));
 --tight-leading: calc(var(--regular-leading)/1.5);
@@ -69,12 +66,18 @@ body {
 }
 
 nav details {
-	background-color: var(--title-white);
+	background-color: var(--primary-white);
 	border-radius: var(--small-radius);
 	margin-block-start: var(--section-spacing);
 	margin-block-end: var(--paragraph-spacing);
 	font-family: var(--primary-typeface);
-	font-size: var(--bodytext);
+	font-size: var(--bodytext-sml);
+
+	@media (min-width: 768px) {
+		&:hover {
+			color: var(--primary-blue);
+		}
+	}
 }
 
 nav summary {
@@ -83,8 +86,44 @@ nav summary {
 	/* If our fonts are the same size do we still need to align items? */
 	/* align-items: center; */
 	padding: var(--paragraph-spacing);
-	list-style: none;
+	/* List-style is to remove the triangle */
+	/* list-style: none; */
 }
+
+ol.tableofcontents {
+	padding: var(--paragraph-spacing);
+	/* margin-block-end: var(--paragraph-spacing); */
+	/* Why is the space below not showing up */
+}
+
+.contentslabel {
+	display: flex;
+	align-items: center;
+	gap: var(--basetext);
+}
+
+.triangle {
+	width: 0;
+	height: 0;
+	transform: rotate(0deg);
+
+	border-top-width:0.5rem ;
+	border-top-style:solid ;
+	border-top-color:transparent ;
+
+	border-bottom-width: 0.5rem;
+	border-bottom-style: solid;
+	border-bottom-color: transparent;
+
+	border-left-width: 0.5rem;
+	border-left-style: solid;
+	border-left-color: var(--primary-black);
+}
+nav details[open] .triangle {
+	transform: rotate(90deg);
+}
+
+
 
 /* Main heading */
 .titleblock {
@@ -124,6 +163,15 @@ h3 {
 	font-size: var(--accent-body);
 }
 
+a {
+	text-decoration: underline;
+
+	@media (min-width: 768px) {
+		&:hover {
+			color: var(--primary-blue);
+		}
+	}
+}
 
 /* Metadata */
 .titlecards {
@@ -155,7 +203,7 @@ h3 {
 
 .codedby {
 	background-color: var(--primary-blue);
-	color: var(--title-white);
+	color: var(--primary-white);
 	font-family: var(--primary-typeface);
 }
 
@@ -184,14 +232,14 @@ h3 {
 }
 
 .essay-subsection .essay-subheading {
-	font-size: var(--bodytext);
+	font-size: var(--bodytext-lrg);
 	font-weight: var(--bold-wt);
 	font-size: var(--subheading);
 	grid-column: span 2;
 }
 
 .pullquote {
-	/* background-color: var(--title-white); */
+	/* background-color: var(--primary-white); */
 	border-color: var(--primary-blue);
 	border-width: calc(var(--basetext)/2);
 	border-style: solid;
@@ -199,23 +247,25 @@ h3 {
 	padding: var(--paragraph-spacing);
 	border-radius: var(--small-radius);
 	margin-block-start: var(--paragraph-spacing);
-	margin-block-end: var(--section-spacing);
+	margin-block-end: var(--paragraph-spacing);
 }
 
 .pullquote > blockquote {
 	font-family: var(--secondary-typeface);
 	font-size: var(--quotations);
+	color: var(--primary-blue);
 }
 
 .pullquote > p {
 	margin-block-end: var(--paragraph-spacing);
+	color: var(--primary-blue);
 }
 
 /* This is to change the colours of the subheading blocks */
 /* .blue-header .essay-number,
 .blue-header .essay-subheading {
 	background-color: var(--primary-blue);
-	color: var(--title-white);
+	color: var(--primary-white);
 } */
 
 /* .blue-header .essay-subheading {
@@ -229,7 +279,7 @@ h3 {
 	padding: var(--paragraph-spacing);
 	margin-block-end: var(--paragraph-spacing);
 	font-family: var(--primary-typeface);
-	font-size: var(--bodytext);
+	font-size: var(--bodytext-lrg);
 	line-height: calc(1.5*var(--regular-leading));
 }
 
