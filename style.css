@@ -355,8 +355,7 @@ a {
 	display: grid;
 	justify-items: center;
 	gap: var(--paragraph-spacing);
-	margin-block-start: var(--section-spacing);
-	margin-block-end: var(--section-spacing);
+	margin-block: var(--section-spacing);
 	text-align: center;
 	text-transform: uppercase;
 }
@@ -364,10 +363,12 @@ a {
 .strikeblock del {
 	position: relative;
 	display: inline-block;
-	text-decoration: none; /* removes the browser's default line-through so we can draw our own */
+	white-space: nowrap;
+	text-box: trim-both cap alphabetic;
+	text-decoration: none;
 	font-family: var(--heading-typeface);
 	color: var(--primary-blue);
-	font-size: var(--metadata-txt);
+	font-size: clamp(var(--metadata-txt), 8vw, var(--accent-header));
 	line-height: var(--loose-leading);
 
 	@media (min-width: 768px) {
@@ -392,8 +393,7 @@ a {
 .strikeblock del::after {
 	content: "";
 	position: absolute;
-	inset-inline-start: calc(-1 * var(--basetext));
-	inset-inline-end: calc(-1 * var(--basetext));
+	inset-inline: calc(-1 * var(--basetext));
 	inset-block-start: 50%;
 	block-size: var(--basetext);
 	background-color: var(--strike-red);
@@ -407,12 +407,55 @@ a {
 	font-family: var(--accent-typeface);
 	color: var(--primary-orange);
 	font-size: clamp(var(--subheading), 5vw, var(--accent-body));
-
+/*new*/
+	text-wrap: balance;
+	max-inline-size: 30ch;
 
 	@media (min-width: 768px) {
 		font-size: var(--accent-body);
 	 	}
 	}
+
+.strikeblock--question {
+	justify-items: start;
+	text-align: start;
+	margin-block: var(--paragraph-spacing);
+
+	ins {
+		font-size: clamp(var(--basetext), 2.5vw, var(--subheading));
+		max-inline-size: 100%;
+	}
+
+	del {
+		font-size: clamp(var(--accent-header), 18vw, 16rem);
+	}
+
+	del::after {
+		block-size: 0.06em;
+		inset-inline-start: -0.05em;
+		inset-inline-end: -0.05em;
+		rotate: -6deg;
+	}
+}
+
+.strikeblock--quote {
+	gap: calc(2 * var(--paragraph-spacing));
+	ins {
+		font-size: clamp(var(--basetext), 2.5vw, var(--subheading));
+		line-height: 1.2;
+		max-inline-size: 100%;
+	}
+
+	del {
+		font-size: clamp(var(--accent-header), 14vw, 14rem);
+	}
+
+	del::after {
+		block-size: 0.06em;
+		inset-inline-start: -0.05em;
+		inset-inline-end: -0.05em;
+	}
+}
 
 
 em {
