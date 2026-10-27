@@ -1,6 +1,6 @@
 :root {
 
---page-max: 75rem;
+--page-max: 65rem;
 
 /* colours */
 --background :rgb(244, 241, 234);
@@ -12,30 +12,52 @@
 --primary-black: rgb(27, 27, 27);
 --primary-white: rgb(255, 255, 255);
 --strike-red:rgb(225, 37, 27);
+
 /* Typeface */
 --heading-typeface:'Anton',sans-serif;
 --primary-typeface:'DM Sans',sans-serif;
 --secondary-typeface:'Bricolage Grotesque',sans-serif;
---metadata-typeface: 'DM Sans' sans-serif;
+--metadata-typeface: 'DM Sans', sans-serif;
 --accent-typeface:'Permanent Marker', cursive;
+
 /* Textsize */ /*working on the magic numbers aspect here and other parts of this sheet*/
---basetext:0.5rem ;
---bodytextsml: calc(1.5*var(--basetext));
+/* --basetext:0.5rem ;
+--label-txt: calc(1.5*var(--basetext));
 --bodytext-lrg: calc(2*var(--basetext));
 --metadata:calc(1.5*var(--bodytext-lrg));
---numbertext:calc(3* var(--metadata));
---quotations: var(--metadata);
+--number-txt:calc(3* var(--metadata));
+--quotation-txt: var(--metadata);
 --subheading: var(--metadata);
 --accent-body: calc(4*var(--bodytext-lrg));
---accent-header: calc(1.5*var(--accent-body));
+--accent-header: calc(1.5*var(--accent-body)); */
+
+/* Textsizes */
+--basetext:0.5rem;
+--text-xtsml: calc(1.5*var(--basetext));
+--text-sml: calc(2.5*var(--basetext));
+--text-md: calc(1.5*var(--text-sml));
+--text-lrg: calc(1.5*var(--text-md));
+--text-xlrg: calc(1.5*var(--text-lrg));
+--text-xxlrg: calc(1.5*var(--text-xlrg));
+
+/* TextTypes */
+--label-txt: var(--text-xtsml);
+--body-txt: var(--text-sml);
+--metadata-txt: var(--text-md);
+--quotation-txt: var(--text-md);
+--number-txt: var(--text-xlrg);
+--subheading: var(--text-md);
+--heading: var(--text-lrg);
+--accent-body: var(--text-xlrg);
+--accent-header: var(--text-xxlrg);
 
 /* Weight */
 --base-weight:100;
---thin-wt: calc(2*var(--base-weight));
---regular-wt: calc(2*var(--thin-wt));
---semibold-wt: calc(2*var(--regular-wt));
---bold-wt: calc(2*var(--semibold-wt));
---extrabold-wt: calc(2*var(--bold-wt));
+--thin-wt: calc(1.5*var(--base-weight));
+--regular-wt: calc(1.5*var(--thin-wt));
+--semibold-wt: calc(1.5*var(--regular-wt));
+--bold-wt: calc(1.5*var(--semibold-wt));
+--extrabold-wt: calc(1.5*var(--bold-wt));
 
 /* Spacing */
 --base-spacing: var(--basetext);
@@ -51,6 +73,7 @@
 --relaxed-leading: calc(2*var(--regular-leading));
 --loose-leading: calc(2*var(--relaxed-leading));
 --extraloose-leading: calc(1.5*var(--loose-leading));
+
 /* Radius */
 --small-radius:2rem;
 --large-radius: calc(2*var(--small-radius));
@@ -71,9 +94,10 @@ nav details {
 	margin-block-start: var(--section-spacing);
 	margin-block-end: var(--paragraph-spacing);
 	font-family: var(--primary-typeface);
-	font-size: var(--bodytext-sml);
+	font-size: var(--label-txt);
 
 	@media (min-width: 768px) {
+		font-size: calc(1.5*var(--label-txt));
 		&:hover {
 			color: var(--primary-blue);
 		}
@@ -149,12 +173,21 @@ nav details[open] .triangle {
 	font-size: var(--accent-header);
 	font-family: var(--heading-typeface);
 	line-height: var(--extraloose-leading);
+
+	@media (min-width: 768px) {
+		font-size: calc(1.2*var(--accent-header));
+		line-height: calc(1.2*var(--extraloose-leading));
+	}
 }
 
 h1 {
 	color: var(--primary-orange);
 	font-family: var(--accent-typeface);
 	font-size: var(--accent-body);
+
+	@media (min-width: 768px) {
+		font-size: calc(1.5*var(--accent-body));
+	}
 }
 
 h3 {
@@ -191,7 +224,7 @@ a {
 	grid-column: span 2;
 	font-family: var(--secondary-typeface);
 	font-weight: var(--extrabold-wt);
-	font-size: var(--metadata);
+	font-size: var(--metadata-txt);
 	/* padding: var(--paragraph-spacing); */
 }
 
@@ -212,6 +245,10 @@ a {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	gap:var(--paragraph-spacing);
+
+	@media (min-width: 768px) {
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	}
 }
 
 .essay-subsection .essay-number,
@@ -222,20 +259,31 @@ a {
 	padding: var(--paragraph-spacing);
 	font-family: var(--secondary-typeface);
 	align-content: center;
+	text-align: center;
 	margin-block-end: var(--paragraph-spacing);
 }
 
 .essay-subsection .essay-number {
-	font-size: var(--numbertext);
+	font-size: var(--number-txt);
 	font-weight: var(--extrabold-wt);
 	grid-column: span 1;
+
+	@media (min-width: 768px) {
+		grid-column: span 2;
+		font-size: calc(1.5*var(--number-txt));
+	}
 }
 
+
 .essay-subsection .essay-subheading {
-	font-size: var(--bodytext-lrg);
-	font-weight: var(--bold-wt);
 	font-size: var(--subheading);
+	font-weight: var(--bold-wt);
 	grid-column: span 2;
+
+	@media (min-width: 768px) {
+		grid-column: span 3;
+		font-size: calc(1.5*var(--subheading));
+	}
 }
 
 .pullquote {
@@ -252,7 +300,7 @@ a {
 
 .pullquote > blockquote {
 	font-family: var(--secondary-typeface);
-	font-size: var(--quotations);
+	font-size: var(--quotation-txt);
 	color: var(--primary-blue);
 }
 
@@ -295,6 +343,11 @@ a {
 	font-family: var(--primary-typeface);
 	font-size: var(--bodytext-lrg);
 	line-height: calc(1.5*var(--regular-leading));
+
+	/* @media (min-width: 768px) {
+		&:font-size: var(--heading);
+		}
+	} */
 }
 
 /*strikethrough block*/
@@ -314,7 +367,7 @@ a {
 	text-decoration: none; /* removes the browser's default line-through so we can draw our own */
 	font-family: var(--heading-typeface);
 	color: var(--primary-blue);
-	font-size: var(--metadata);
+	font-size: var(--metadata-txt);
 	line-height: var(--loose-leading);
 
 	@media (min-width: 768px) {
@@ -332,7 +385,7 @@ a {
 	text-decoration: none;
 	font-family: var(--heading-typeface);
 	color: var(--primary-blue);
-	font-size: clamp(var(--metadata), 8vw, var(--accent-header));
+	font-size: clamp(var(--metadata-txt), 8vw, var(--accent-header));
 }
 
 
@@ -354,10 +407,11 @@ a {
 	font-family: var(--accent-typeface);
 	color: var(--primary-orange);
 	font-size: clamp(var(--subheading), 5vw, var(--accent-body));
-}
+
 
 	@media (min-width: 768px) {
 		font-size: var(--accent-body);
+	 	}
 	}
 
 
