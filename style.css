@@ -1,6 +1,7 @@
 :root {
 
---page-max: 65rem;
+--page-max-phone: 75rem;
+--page-max-laptop: 65rem;
 
 /* colours */
 --background :rgb(244, 241, 234);
@@ -82,11 +83,15 @@
 
 body {
 	background-color: var(--background);
-	max-inline-size: var(--page-max);
+	max-inline-size: var(--page-max-phone);
 	margin-inline: auto;
 	padding-inline: var(--content-indent);
 	color: var(--primary-black);
 	font-family: var(--primary-typeface);
+
+	@media (min-width: 768px) {
+		max-inline-size: var(--page-max-laptop);
+	}
 }
 
 nav details {
@@ -193,10 +198,13 @@ h1 {
 
 h3 {
 	font-family: var(--secondary-typeface);
-	color: var(--primary-blue);
+	color: var(--primary-white);
 	font-size: var(--accent-body);
-	margin-block-start: var(--section-spacing);
+	margin-block-start: calc(2*var(--section-spacing));
 	margin-block-end: var(--paragraph-spacing);
+	background-color: var(--primary-orange);
+	border-radius: var(--medium-radius);
+	padding: var(--paragraph-spacing);
 }
 
 a {
@@ -234,6 +242,12 @@ strong {
 
 span.author {
 	font-weight: var(--extrabold-wt);
+}
+
+.reference-list {
+	background-color: var(--text-background);
+	border-radius: var(--medium-radius);
+	padding: var(--paragraph-spacing);
 }
 
 /* Metadata */
