@@ -409,23 +409,11 @@ span.author {
 	}
 }
 
-/* the red strike line */ /*I asked chat (linked in readme file) and used this site to learn clamp to scale text proportionally as you move screen sizes: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/clamp*/
-.strikeblock del {
-	position: relative;
-	display: inline-block;
-	white-space: nowrap;
-	text-box: trim-both cap alphabetic;
-	text-decoration: none;
-	font-family: var(--heading-typeface);
-	color: var(--primary-blue);
-	font-size: clamp(var(--metadata-txt), 8vw, var(--accent-header));
-}
-
-
 .strikeblock del::after {
 	content: "";
 	position: absolute;
-	inset-inline: calc(-1 * var(--basetext));
+	inset-inline-start: calc(-1 * var(--basetext));
+	inset-inline-end: calc(-1 * var(--basetext));
 	inset-block-start: 50%;
 	block-size: var(--basetext);
 	background-color: var(--strike-red);
@@ -439,7 +427,6 @@ span.author {
 	font-family: var(--accent-typeface);
 	color: var(--primary-orange);
 	font-size: clamp(var(--subheading), 5vw, var(--accent-body));
-/*new*/
 	text-wrap: balance;
 	max-inline-size: 30ch;
 
@@ -459,11 +446,11 @@ span.author {
 	}
 
 	del {
-		font-size: clamp(var(--accent-header), 18vw, 16rem);
+		font-size: clamp(var(--accent-header), 13vw, 15rem);
 	}
 
 	del::after {
-		block-size: 0.06em;
+		rotate: -6deg;
 		inset-inline-start: -0.05em;
 		inset-inline-end: -0.05em;
 		rotate: -6deg;
@@ -472,14 +459,16 @@ span.author {
 
 .strikeblock--quote {
 	gap: calc(2 * var(--paragraph-spacing));
+
 	ins {
 		font-size: clamp(var(--basetext), 2.5vw, var(--subheading));
 		line-height: 1.2;
 		max-inline-size: 100%;
 	}
 
+
 	del {
-		font-size: clamp(var(--accent-header), 14vw, 14rem);
+		font-size: clamp(var(--accent-header), 8vw, 10rem);
 	}
 
 	del::after {
