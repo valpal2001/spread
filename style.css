@@ -272,6 +272,43 @@ span.author {
 	border-radius:var(--small-radius);
 }
 
+/* Add the 2nd brick on the side with a "back to top nav" or fuck content link here so the hero moment comes in at the end as well */
+.endcards {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: var(--paragraph-spacing);
+}
+
+.closing-quote {
+	background-color: var(--primary-blue);
+	grid-column: span 2;
+	font-family: var(--heading-typeface);
+	font-weight: var(--extrabold-wt);
+	font-size: var(--accent-body);
+	border-radius: var(--medium-radius);
+	color:var(--primary-white);
+	padding: var(--section-spacing);
+	margin-block: var(--section-spacing);
+	line-height: var(--loose-leading);
+}
+
+#top {
+	background-color: var(--primary-orange);
+	grid-column: span 1;
+	font-family: var(--accent-typeface);
+	font-weight: var(--extrabold-wt);
+	font-size: var(--metadata-txt);
+	border-radius: var(--medium-radius);
+	color:var(--primary-black);
+	padding: var(--section-spacing);
+	margin-block: var(--section-spacing);
+}
+
+.closing-quote > span {
+	font-family: var(--accent-typeface);
+	color: var(--primary-orange);
+}
+
 /* Introduction */
 .essay-subsection .essay-header {
 	display: grid;
