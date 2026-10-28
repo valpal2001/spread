@@ -198,13 +198,18 @@ h1 {
 
 h3 {
 	font-family: var(--secondary-typeface);
-	color: var(--primary-white);
-	font-size: var(--accent-body);
+	font-size: var(--subheading);
+	font-weight: var(--extrabold-wt);
+	color: var(--primary-black);
 	margin-block-start: calc(2*var(--section-spacing));
 	margin-block-end: var(--paragraph-spacing);
 	background-color: var(--primary-orange);
 	border-radius: var(--medium-radius);
 	padding: var(--paragraph-spacing);
+
+	@media (min-width: 768px) {
+		font-size: var(--heading);
+	}
 }
 
 a {
@@ -424,8 +429,8 @@ span.author {
 	padding: var(--paragraph-spacing);
 	margin-block-end: var(--paragraph-spacing);
 	font-family: var(--primary-typeface);
-	font-size: var(--bodytext-lrg);
-	line-height: calc(1.5*var(--regular-leading));
+	font-size: var(--body-txt);
+	line-height:var(--relaxed-leading);
 
 	/* @media (min-width: 768px) {
 		&:font-size: var(--heading);
