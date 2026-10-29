@@ -64,8 +64,9 @@
 --extraloose-leading: calc(1.5*var(--loose-leading));
 
 /* Radius */
---small-radius:1rem;
---medium-radius: calc(2*var(--small-radius));
+--extrasmall-radius:1rem;
+--small-radius:calc(1.5*var(--extrasmall-radius));
+--medium-radius: calc(2*var(--extrasmall-radius));
 }
 
 body {
@@ -160,40 +161,6 @@ h1 {
 	}
 }
 
-.titleblock {
-	background-color: var(--primary-blue);
-	border-radius: var(--medium-radius);
-	display: grid;
-	/* justify-content: align; */
-	grid-template-columns: 1fr;
-	padding: var(--paragraph-spacing);
-	margin-block-end: var(--paragraph-spacing);
-}
-
-.titlelabel {
-	color: var(--primary-pink);
-	text-transform: uppercase;
-	font-size: var(--basetext);
-	margin-block-start: var(--paragraph-spacing);
-	margin-block-end: var(--section-spacing);
-}
-
-.titleback {
-	grid-column: 1;
-	grid-row: 2;
-	opacity: 0.5;
-	color: var(--primary-pink);
-	text-transform: uppercase;
-	font-size: var(--accent-header);
-	font-family: var(--heading-typeface);
-	line-height: 1.1em;
-
-	@media (min-width: 768px) {
-		font-size: calc(1.2*var(--accent-header));
-		line-height: calc(1.2*var(--extraloose-leading));
-	}
-}
-
 h3 {
 	font-family: var(--secondary-typeface);
 	font-size: var(--subheading);
@@ -202,7 +169,7 @@ h3 {
 	margin-block-start: calc(2*var(--section-spacing));
 	margin-block-end: var(--paragraph-spacing);
 	background-color: var(--primary-orange);
-	border-radius: var(--medium-radius);
+	border-radius: var(--small-radius);
 	padding: var(--paragraph-spacing);
 
 	@media (min-width: 768px) {
@@ -262,16 +229,54 @@ header {
 	}
 }
 
+.titleblock {
+	background-color: var(--primary-blue);
+	border-radius: var(--medium-radius);
+	display: grid;
+	/* justify-content: align; */
+	grid-template-columns: 1fr;
+	padding: var(--paragraph-spacing);
+	/* margin-block-end: var(--paragraph-spacing); */
+	/* This was adding a space below the titleblock */
+	margin-block-end: 0;
+}
+
+.titlelabel {
+	color: var(--primary-pink);
+	text-transform: uppercase;
+	font-size: var(--basetext);
+	margin-block-start: var(--paragraph-spacing);
+	margin-block-end: var(--section-spacing);
+}
+
+.titleback {
+	grid-column: 1;
+	grid-row: 2;
+	opacity: 0.5;
+	color: var(--primary-pink);
+	text-transform: uppercase;
+	font-size: var(--accent-header);
+	font-family: var(--heading-typeface);
+	line-height: 1.1em;
+
+	@media (min-width: 768px) {
+		font-size: calc(1.2*var(--accent-header));
+		line-height: calc(1.2*var(--extraloose-leading));
+	}
+}
+
 .titlecards {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: var(--paragraph-spacing);
+	margin-block-start:var(--paragraph-spacing);
 
 	@media (min-width: 768px) {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
 		flex-basis: 0;
+		margin-block-start: 0;
 		/* this is where i learned about how to make the cards the right width: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-basis */
 	}
 
@@ -286,7 +291,7 @@ header {
 	}
 
 	.authorheading,.codedby, .response {
-		border-radius: var(--small-radius);
+		border-radius: var(--extrasmall-radius);
 	}
 
 	.response {
@@ -296,7 +301,7 @@ header {
 		font-size: var(--metadata-txt);
 
 		@media (min-width: 768px) {
-			border-radius: var(--medium-radius);
+			border-radius: var(--small-radius);
 		}
 	}
 
@@ -307,6 +312,10 @@ header {
 	.codedby {
 		background-color: var(--primary-blue);
 		color: var(--primary-white);
+
+		@media (min-width: 768px) {
+			flex-grow: 1;
+		}
 	}
 }
 
@@ -330,7 +339,7 @@ header {
 }
 
 #top, .related-link, .previous-website {
-	border-radius: var(--small-radius);
+	border-radius: var(--extrasmall-radius);
 	padding: var(--paragraph-spacing);
 	font-weight: var(--bold-wt);
 	font-size: var(--label-txt);
@@ -560,9 +569,9 @@ header {
 	text-wrap: balance;
 	max-inline-size: 30ch;
 
-	/* @media (width> 768px) {
-		font-size: var(--accent-body);
-	 	} */
+	@media (width> 768px) {
+		font-size: var(--quotation-txt);
+	 	}
 	}
 
 .strikeblock--long-ins {
@@ -627,7 +636,7 @@ header {
 	}
 }
 
-/* Desktop */
+
 @page {
 	margin: 0.5in; /* Prevent default/additional print spacing. */
 	size: letter;
@@ -638,13 +647,38 @@ header {
 		--basetext: 5pt;
 		--primary-blue: var(--primary-black);
 		--primary-orange: var(--primary-black);
+		--primary-pink: var(--primary-white);
 		--strike-red: var(--primary-black);
 		--text-background: transparent;
 		--background: var(--primary-white);
 	}
 
-	nav, #top, .related-link, .previous-website {
+	body {
+		print-color-adjust: exact;
+	}
+
+	nav, a, #top, .related-link, .previous-website {
 		display: none;
+	}
+
+	title {
+		color: transparent;
+	}
+
+	h1 {
+		color: var(--primary-black);
+	}
+
+	h2, .closing-quote {
+		text-wrap: balance;
+	}
+
+	ol.reference-list {
+		background-color: transparent;
+	}
+
+	.endcards span {
+		color: var(--primary-white);
 	}
 
 	.essay-subsection > p {
@@ -655,30 +689,47 @@ header {
 		orphans: 3;
 		/* a widow is the last line of a paragraph that appears alone at the top of a page. (The paragraph is continued from a prior page.) */
 		widows: 3;
+		background-color: transparent;
 	}
 
 	.essay-subsection .essay-number,
 	.essay-subsection .essay-subheading,
 	.closing-quote {
-		background-color: transparent;
+		/* background-color: transparent; */
 		color: var(--primary-black);
 		border-width: calc(var(--basetext)/2);
 		border-style: solid;
 		border-color: var(--primary-black);
+		background-color: color-mix(in srgb, var(--primary-black) 40%, transparent);
 	}
-
-	h2, .closing-quote {
-		text-wrap: balance;
-	}
-
 
 	.essay-header {
 		/* break-before: page; */
 		break-after: avoid;
 	}
 
+	.titlecards .response, .titlecards .authorheading, .titlecards .codedby {
+		background-color: color-mix(in srgb, var(--primary-black) 25%, transparent);
+	}
+
+	.titlecards .codedby {
+		color: var(--primary-black);
+	}
+
+	.titleblock {
+		background-color: color-mix(in srgb, var(--primary-black) 70%, transparent);
+	}
+
 	.pullquote, .strikeblock, .endcards {
 		break-inside: avoid;
+	}
+
+	.strikeblock del::after {
+		background-color: var(--primary-white);
+	}
+
+	.strikeblock ins, .strikeblock--long-ins {
+		font-size: var(--quotation-txt);
 	}
 }
 
