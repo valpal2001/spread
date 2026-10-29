@@ -21,24 +21,13 @@
 --metadata-typeface: 'DM Sans', sans-serif;
 --accent-typeface:'Permanent Marker', cursive;
 
-/* Textsize */ /*working on the magic numbers aspect here and other parts of this sheet*/
-/* --basetext:0.5rem ;
---label-txt: calc(1.5*var(--basetext));
---bodytext-lrg: calc(2*var(--basetext));
---metadata:calc(1.5*var(--bodytext-lrg));
---number-txt:calc(3* var(--metadata));
---quotation-txt: var(--metadata);
---subheading: var(--metadata);
---accent-body: calc(4*var(--bodytext-lrg));
---accent-header: calc(1.5*var(--accent-body)); */
-
 /* Textsizes */
 --basetext:0.5rem;
 --text-xtsml: calc(1.5*var(--basetext));
---text-sml: calc(2.5*var(--basetext));
+--text-sml: calc(2*var(--basetext));
 --text-md: calc(1.5*var(--text-sml));
 --text-lrg: calc(1.5*var(--text-md));
---text-xlrg: calc(1.5*var(--text-lrg));
+--text-xlrg: calc(2*var(--text-lrg));
 --text-xxlrg: calc(1.5*var(--text-xlrg));
 
 /* TextTypes */
@@ -64,7 +53,6 @@
 --base-spacing: var(--basetext);
 --paragraph-spacing:calc(2*var(--base-spacing));
 --section-spacing: calc(2.5*var(--paragraph-spacing));
-/* --page-start: calc(2*var(--section-spacing)); */
 --content-indent: var(--paragraph-spacing);
 --content-end: var(--content-indent);
 
@@ -72,6 +60,7 @@
 --regular-leading: calc(2*var(--basetext));
 --tight-leading: calc(var(--regular-leading)/1.5);
 --relaxed-leading: calc(2*var(--regular-leading));
+--open-leading: calc(1.5 * var(--relaxed-leading));
 --loose-leading: calc(2*var(--relaxed-leading));
 --extraloose-leading: calc(1.5*var(--loose-leading));
 
@@ -180,7 +169,7 @@ nav details[open] .triangle {
 	font-family: var(--heading-typeface);
 	line-height: var(--extraloose-leading);
 
-	@media (min-width> 768px) {
+	@media (min-width: 768px) {
 		font-size: calc(1.2*var(--accent-header));
 		line-height: calc(1.2*var(--extraloose-leading));
 	}
@@ -191,7 +180,7 @@ h1 {
 	font-family: var(--accent-typeface);
 	font-size: var(--accent-body);
 
-	@media (min-width> 768px) {
+	@media (min-width: 768px) {
 		font-size: calc(1.5*var(--accent-body));
 	}
 }
@@ -207,7 +196,7 @@ h3 {
 	border-radius: var(--medium-radius);
 	padding: var(--paragraph-spacing);
 
-	@media (min-width> 768px) {
+	@media (min-width: 768px) {
 		font-size: var(--heading);
 	}
 }
@@ -215,7 +204,7 @@ h3 {
 a {
 	text-decoration: underline;
 
-	@media (min-width>768px) {
+	@media (min-width: 768px) {
 		&:hover {
 			color: var(--primary-blue);
 		}
@@ -305,19 +294,21 @@ span.author {
 	background-color: var(--primary-blue);
 	grid-column: span 2;
 	grid-row: span 3;
+	text-transform: uppercase;
 	font-family: var(--heading-typeface);
-	font-weight: var(--extrabold-wt);
+	font-weight: var(--bold-wt);
 	font-size: var(--heading);
 	border-radius: var(--medium-radius);
 	color:var(--primary-white);
-	padding: var(--paragraph-spacing);
-	line-height: var(--loose-leading);
+	padding: var(--basetext);
+	line-height: var(--open-leading);
 	align-content: center;
 	text-align: center;
 	padding: var(--section-spacing);
 
-	@media (min-width>768px) {
+	@media (min-width: 768px) {
 		font-size: var(--accent-body);
+		line-height: calc(1.2*var(--loose-leading));
 	}
 }
 
@@ -332,12 +323,16 @@ span.author {
 	grid-row: span 1;
 	font-family: var(--primary-typeface);
 	font-weight: var(--bold-wt);
-	font-size: var(--body-txt);
+	font-size: var(--label-txt);
 	text-decoration: none;
 	border-radius: var(--small-radius);
 	color:var(--primary-white);
 	align-content: center;
 	text-align: center;
+
+	@media (min-width :768px) {
+		font-size: var(--body-txt);
+	}
 }
 
 .related-link {
@@ -347,10 +342,14 @@ span.author {
 	padding: var(--paragraph-spacing);
 	border-radius: var(--small-radius);
 	font-family: var(--secondary-typeface);
-	font-size: var(--body-txt);
+	font-size: var(--label-txt);
 	font-weight: var(--bold-wt);
 	align-content: center;
 	text-align: center;
+
+	@media (min-width :768px) {
+		font-size: var(--body-txt);
+	}
 }
 
 .previous-website {
@@ -360,22 +359,26 @@ span.author {
 	padding: var(--paragraph-spacing);
 	border-radius: var(--small-radius);
 	font-family: var(--primary-typeface);
-	font-size: var(--body-txt);
+	font-size: var(--label-txt);
 	font-weight: var(--bold-wt);
 	color: var(--primary-black);
 	align-content: center;
 	text-align: center;
+
+	@media (min-width :768px) {
+		font-size: var(--body-txt);
+	}
 
 }
 
 /* Introduction */
 .essay-subsection .essay-header {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: repeat(3, 1fr);
 	gap:var(--paragraph-spacing);
 
-	@media (min-width>768px) {
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	@media (min-width:768px) {
+		grid-template-columns: repeat(5, 1fr);
 	}
 }
 
@@ -396,7 +399,7 @@ span.author {
 	font-weight: var(--extrabold-wt);
 	grid-column: span 1;
 
-	@media (min-width> 768px) {
+	@media (min-width:768px) {
 		grid-column: span 2;
 		font-size: calc(1.5*var(--number-txt));
 	}
@@ -408,7 +411,7 @@ span.author {
 	font-weight: var(--bold-wt);
 	grid-column: span 2;
 
-	@media (min-width> 768px) {
+	@media (min-width:768px) {
 		grid-column: span 3;
 		font-size: calc(1.5*var(--subheading));
 	}
@@ -446,10 +449,10 @@ span.author {
 	font-size: var(--body-txt);
 	line-height:var(--relaxed-leading);
 
-	/* @media (min-width> 768px) {
-		&:font-size: var(--heading);
-		}
-	} */
+	@media (min-width:768px) {
+		font-size: calc(1.1*var(--body-txt));
+	}
+
 }
 
 /* This is to change the colours of the subheading blocks */
@@ -541,9 +544,9 @@ span.author {
 	text-wrap: balance;
 	max-inline-size: 30ch;
 
-	@media (min-width> 768px) {
+	/* @media (width> 768px) {
 		font-size: var(--accent-body);
-	 	}
+	 	} */
 	}
 
 .strikeblock--long-ins {
@@ -576,7 +579,7 @@ span.author {
 	}
 }
 
-@media (min-width> 768px) {
+@media (min-width: 768px) {
 	header {
 		display: flex;
 		gap: var(--paragraph-spacing);
