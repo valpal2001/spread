@@ -292,8 +292,8 @@ span.author {
 
 .closing-quote {
 	background-color: var(--primary-blue);
-	grid-column: span 2;
-	grid-row: span 3;
+	grid-column: span 3;
+	grid-row: span 2;
 	text-transform: uppercase;
 	font-family: var(--heading-typeface);
 	font-weight: var(--bold-wt);
@@ -309,18 +309,20 @@ span.author {
 	@media (min-width: 768px) {
 		font-size: var(--accent-body);
 		line-height: calc(1.2*var(--loose-leading));
+		grid-column: span 2;
+		grid-row: span 3;
 	}
 }
 
 .closing-quote > span {
 	font-family: var(--accent-typeface);
 	color: var(--primary-orange);
+	text-align: center;
 }
 
 #top {
 	background-color: var(--primary-blue);
 	grid-column: span 1;
-	grid-row: span 1;
 	font-family: var(--primary-typeface);
 	font-weight: var(--bold-wt);
 	font-size: var(--label-txt);
@@ -337,7 +339,6 @@ span.author {
 
 .related-link {
 	grid-column: span 1;
-	grid-row: span 1;
 	background-color: var(--primary-yellow);
 	padding: var(--paragraph-spacing);
 	border-radius: var(--small-radius);
@@ -354,7 +355,6 @@ span.author {
 
 .previous-website {
 	grid-column: span 1;
-	grid-row: span 1;
 	background-color: var(--primary-orange);
 	padding: var(--paragraph-spacing);
 	border-radius: var(--small-radius);
@@ -384,7 +384,6 @@ span.author {
 
 .essay-subsection .essay-number,
 .essay-subsection .essay-subheading {
-	margin-block-start: var(--section-spacing);
 	background-color: var(--primary-orange);
 	border-radius: var(--medium-radius);
 	padding: var(--paragraph-spacing);
@@ -460,18 +459,22 @@ span.author {
 .blue-header .essay-subheading {
 	background-color: var(--primary-blue);
 	color: var(--primary-white);
+	margin-block-start: var(--section-spacing);
+
 }
 
 .yellow-header .essay-number,
 .yellow-header .essay-subheading {
 	background-color: var(--primary-yellow);
 	color: var(--primary-black);
+	margin-block-start: var(--section-spacing);
 }
 
 .orange-header .essay-number,
 .orange-header .essay-subheading {
 	background-color: var(--primary-orange);
 	color: var(--primary-black);
+	margin-block-start: var(--section-spacing);
 }
 
 .blue-header .essay-subheading,
@@ -491,7 +494,8 @@ span.author {
 	display: grid;
 	justify-items: var(--align);
 	gap: var(--paragraph-spacing);
-	margin-block: var(--section-spacing);
+	/* margin-block: var(--section-spacing); */
+	/* TO BE FIXED: the spacing doubles when it comes above a subheading */
 	text-align: var(--align);
 	text-transform: uppercase;
 
