@@ -150,6 +150,7 @@ nav details[open] .triangle {
 	border-radius: var(--medium-radius);
 	display: grid;
 	/* justify-content: align; */
+	grid-template-columns: 1fr;
 	padding: var(--paragraph-spacing);
 	margin-block-end: var(--paragraph-spacing);
 }
@@ -163,11 +164,14 @@ nav details[open] .triangle {
 }
 
 .titleback {
+	grid-column: 1;
+	grid-row: 2;
+	opacity: 0.5;
 	color: var(--primary-pink);
 	text-transform: uppercase;
 	font-size: var(--accent-header);
 	font-family: var(--heading-typeface);
-	line-height: var(--extraloose-leading);
+	line-height: 1.1em;
 
 	@media (min-width: 768px) {
 		font-size: calc(1.2*var(--accent-header));
@@ -176,6 +180,12 @@ nav details[open] .triangle {
 }
 
 h1 {
+	grid-column: 1;
+	grid-row: 2;
+	justify-self: start;
+	align-self: center;
+	z-index: 1;
+	rotate: -8deg;
 	color: var(--primary-orange);
 	font-family: var(--accent-typeface);
 	font-size: var(--accent-body);
