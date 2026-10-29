@@ -693,15 +693,12 @@ span.author {
 	}
 }
 
-/* Desktop */
-@media (min-width: 1200px) {
-}
-
-/* Print */
+/* print */
 @page {
 	margin: 0.5in; /* Prevent default/additional print spacing. */
 	size: letter;
 }
+
 @media print {
 	:root {
 		--basetext: 5pt;
@@ -715,37 +712,15 @@ span.author {
 	nav, #top, .related-link, .previous-website {
 		display: none;
 	}
-	body {
-		print-color-adjust: exact;
-	}
-
-	.essay-header {
-		/* break-before: page; */
-		break-after: avoid;
-		}
-
-	.pullquote, .strikeblock, .endcards {
-		break-inside: avoid;
-	}
 
 	.essay-subsection > p {
+		padding-inline: 0;
+		border-radius: 0;
+		hyphens: auto;
+		/* an orphan is the first line of a paragraph that appears alone at the bottom of a page. (The paragraph continues on a following page.) */
 		orphans: 3;
+		/* a widow is the last line of a paragraph that appears alone at the top of a page. (The paragraph is continued from a prior page.) */
 		widows: 3;
-	}
-	/* an orphan is the first line of a paragraph that appears alone at the bottom of a page. (The paragraph continues on a following page.) */
-	 /* a widow is the last line of a paragraph that appears alone at the top of a page. (The paragraph is continued from a prior page.) */
-}
-
-	h2, .closing-quote {
-		text-wrap: balance;
-	}
-
-	.essay-header {
-		break-after: avoid;
-	}
-
-	.pullquote, .strikeblock, .endcards {
-		break-inside: avoid;
 	}
 
 	.essay-subsection .essay-number,
@@ -753,6 +728,21 @@ span.author {
 	.closing-quote {
 		background-color: transparent;
 		color: var(--primary-black);
+		border-width: calc(var(--basetext) / 2);
 		border-style: solid;
 		border-color: var(--primary-black);
 	}
+
+	h2, .closing-quote {
+		text-wrap: balance;
+	}
+
+	.essay-header {
+		/* break-before: page; */
+		break-after: avoid;
+	}
+
+	.pullquote, .strikeblock, .endcards {
+		break-inside: avoid;
+	}
+}
