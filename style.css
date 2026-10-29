@@ -507,7 +507,7 @@ span.author {
 }
 
 .essay-subsection .strikeblock {
-	margin-block: var(--section-spacing);
+	margin-block: calc(1.5 * var(--section-spacing));
 }
 
 
