@@ -78,7 +78,7 @@ body {
 	color: var(--primary-black);
 	font-family: var(--primary-typeface);
 
-	@media (min-width> 768px) {
+	@media (width> 768px) {
 		max-inline-size: var(--page-max-laptop);
 	}
 }
@@ -91,7 +91,7 @@ nav details {
 	font-family: var(--primary-typeface);
 	font-size: var(--label-txt);
 
-	@media (min-width> 768px) {
+	@media (width> 768px) {
 		font-size: calc(1.5*var(--label-txt));
 		&:hover {
 			color: var(--primary-blue);
@@ -703,24 +703,56 @@ span.author {
 	size: letter;
 }
 @media print {
-	nav, #top, a {
-	display: none;
-}
-body {
-	print-color-adjust: exact;
-}
-.essay-header {
-	/* break-before: page; */
-	break-after: avoid;
+	:root {
+		--basetext: 5pt;
+		--primary-blue: var(--primary-black);
+		--primary-orange: var(--primary-black);
+		--strike-red: var(--primary-black);
+		--text-background: transparent;
+		--background: var(--primary-white);
 	}
-.pullquote, .strikeblock, .endcards {
+
+	nav, #top, .related-link, .previous-website {
+		display: none;
+	}
+	body {
+		print-color-adjust: exact;
+	}
+
+	.essay-header {
+		/* break-before: page; */
+		break-after: avoid;
+		}
+
+	.pullquote, .strikeblock, .endcards {
 		break-inside: avoid;
 	}
 
-.essay-subsection > p {
+	.essay-subsection > p {
 		orphans: 3;
 		widows: 3;
 	}
 	/* an orphan is the first line of a paragraph that appears alone at the bottom of a page. (The paragraph continues on a following page.) */
 	 /* a widow is the last line of a paragraph that appears alone at the top of a page. (The paragraph is continued from a prior page.) */
 }
+
+	h2, .closing-quote {
+		text-wrap: balance;
+	}
+
+	.essay-header {
+		break-after: avoid;
+	}
+
+	.pullquote, .strikeblock, .endcards {
+		break-inside: avoid;
+	}
+
+	.essay-subsection .essay-number,
+	.essay-subsection .essay-subheading,
+	.closing-quote {
+		background-color: transparent;
+		color: var(--primary-black);
+		border-style: solid;
+		border-color: var(--primary-black);
+	}
