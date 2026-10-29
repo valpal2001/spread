@@ -693,7 +693,7 @@ span.author {
 	}
 }
 
-/* print */
+/* Desktop */
 @page {
 	margin: 0.5in; /* Prevent default/additional print spacing. */
 	size: letter;
@@ -737,6 +737,7 @@ span.author {
 		text-wrap: balance;
 	}
 
+
 	.essay-header {
 		/* break-before: page; */
 		break-after: avoid;
@@ -746,3 +747,4 @@ span.author {
 		break-inside: avoid;
 	}
 }
+
