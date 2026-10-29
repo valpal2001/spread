@@ -280,17 +280,18 @@ span.author {
 	border-radius:var(--small-radius);
 }
 
-/* End of the webpage */
-.endcards {
+/* End of the webpage attempt 1 */
+
+/* .endcards {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(3, 1fr);
 	gap: var(--paragraph-spacing);
 	margin-block-start: var(--section-spacing);
 	/* padding: var(--paragraph-spacing); */
-}
 
-.closing-quote {
+
+/* .closing-quote {
 	background-color: var(--primary-blue);
 	grid-column: span 3;
 	grid-row: span 2;
@@ -312,15 +313,15 @@ span.author {
 		grid-column: span 2;
 		grid-row: span 3;
 	}
-}
+} */
 
-.closing-quote > span {
+/* .closing-quote > span {
 	font-family: var(--accent-typeface);
 	color: var(--primary-orange);
 	text-align: center;
-}
+} */
 
-#top {
+/* #top {
 	background-color: var(--primary-blue);
 	grid-column: span 1;
 	font-family: var(--primary-typeface);
@@ -335,9 +336,9 @@ span.author {
 	@media (min-width :768px) {
 		font-size: var(--body-txt);
 	}
-}
+} */
 
-.related-link {
+/* .related-link {
 	grid-column: span 1;
 	background-color: var(--primary-yellow);
 	padding: var(--paragraph-spacing);
@@ -351,9 +352,9 @@ span.author {
 	@media (min-width :768px) {
 		font-size: var(--body-txt);
 	}
-}
+} */
 
-.previous-website {
+/* .previous-website {
 	grid-column: span 1;
 	background-color: var(--primary-orange);
 	padding: var(--paragraph-spacing);
@@ -368,8 +369,76 @@ span.author {
 	@media (min-width :768px) {
 		font-size: var(--body-txt);
 	}
+} */
 
+/* Attempt at code hygyine for the end of website section */
+.endcards {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	gap: var(--paragraph-spacing);
+	margin-block-start: var(--section-spacing);
 }
+
+.closing-quote, #top, .related-link, .previous-website {
+	align-content: center;
+	text-align: center;
+}
+
+.closing-quote, #top {
+	background-color: var(--primary-blue);
+	color: var(--primary-white);
+}
+
+#top, .related-link, .previous-website {
+	border-radius: var(--small-radius);
+	padding: var(--paragraph-spacing);
+	font-weight: var(--bold-wt);
+	font-size: var(--label-txt);
+
+	@media (min-width: 768px) {
+		font-size: var(--body-txt);
+	}
+}
+
+.closing-quote {
+	grid-column: span 3;
+	grid-row: span 2;
+	border-radius: var(--medium-radius);
+	padding: var(--section-spacing);
+	text-transform: uppercase;
+	font-family: var(--heading-typeface);
+	font-weight: var(--bold-wt);
+	font-size: var(--heading);
+	line-height: var(--open-leading);
+
+	@media (min-width: 768px) {
+		grid-column: span 2;
+		grid-row: span 3;
+		font-size: var(--accent-body);
+		line-height: calc(1.2 * var(--loose-leading));
+	}
+}
+
+.closing-quote > span {
+	font-family: var(--accent-typeface);
+	color: var(--primary-orange);
+}
+
+#top {
+	text-decoration: none;
+}
+
+.related-link {
+	background-color: var(--primary-yellow);
+	font-family: var(--secondary-typeface);
+}
+
+.previous-website {
+	background-color: var(--primary-orange);
+	color: var(--primary-black);
+}
+
 
 /* Introduction */
 .essay-subsection .essay-header {
