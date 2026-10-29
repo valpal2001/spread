@@ -291,41 +291,81 @@ span.author {
 	border-radius:var(--small-radius);
 }
 
-/* Add the 2nd brick on the side with a "back to top nav" or fuck content link here so the hero moment comes in at the end as well */
+/* End of the webpage */
 .endcards {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
 	gap: var(--paragraph-spacing);
+	margin-block-start: var(--section-spacing);
+	/* padding: var(--paragraph-spacing); */
 }
 
 .closing-quote {
 	background-color: var(--primary-blue);
 	grid-column: span 2;
+	grid-row: span 3;
 	font-family: var(--heading-typeface);
 	font-weight: var(--extrabold-wt);
-	font-size: var(--accent-body);
+	font-size: var(--heading);
 	border-radius: var(--medium-radius);
 	color:var(--primary-white);
-	padding: var(--section-spacing);
-	margin-block: var(--section-spacing);
+	padding: var(--paragraph-spacing);
 	line-height: var(--loose-leading);
-}
-
-#top {
-	background-color: var(--primary-orange);
-	grid-column: span 1;
-	font-family: var(--accent-typeface);
-	font-weight: var(--extrabold-wt);
-	font-size: var(--metadata-txt);
-	border-radius: var(--medium-radius);
-	color:var(--primary-black);
+	align-content: center;
+	text-align: center;
 	padding: var(--section-spacing);
-	margin-block: var(--section-spacing);
+
+	@media (min-width: 768px) {
+		font-size: var(--accent-body);
+	}
 }
 
 .closing-quote > span {
 	font-family: var(--accent-typeface);
 	color: var(--primary-orange);
+}
+
+#top {
+	background-color: var(--primary-blue);
+	grid-column: span 1;
+	grid-row: span 1;
+	font-family: var(--primary-typeface);
+	font-weight: var(--bold-wt);
+	font-size: var(--body-txt);
+	text-decoration: none;
+	border-radius: var(--small-radius);
+	color:var(--primary-white);
+	align-content: center;
+	text-align: center;
+}
+
+.related-link {
+	grid-column: span 1;
+	grid-row: span 1;
+	background-color: var(--primary-yellow);
+	padding: var(--paragraph-spacing);
+	border-radius: var(--small-radius);
+	font-family: var(--secondary-typeface);
+	font-size: var(--body-txt);
+	font-weight: var(--bold-wt);
+	align-content: center;
+	text-align: center;
+}
+
+.previous-website {
+	grid-column: span 1;
+	grid-row: span 1;
+	background-color: var(--primary-orange);
+	padding: var(--paragraph-spacing);
+	border-radius: var(--small-radius);
+	font-family: var(--primary-typeface);
+	font-size: var(--body-txt);
+	font-weight: var(--bold-wt);
+	color: var(--primary-black);
+	align-content: center;
+	text-align: center;
+
 }
 
 /* Introduction */
@@ -397,6 +437,21 @@ span.author {
 	color: var(--primary-blue);
 }
 
+.essay-subsection > p {
+	background-color: var(--text-background);
+	border-radius: var(--medium-radius);
+	padding: var(--paragraph-spacing);
+	margin-block-end: var(--paragraph-spacing);
+	font-family: var(--primary-typeface);
+	font-size: var(--body-txt);
+	line-height:var(--relaxed-leading);
+
+	/* @media (min-width: 768px) {
+		&:font-size: var(--heading);
+		}
+	} */
+}
+
 /* This is to change the colours of the subheading blocks */
  .blue-header .essay-number,
 .blue-header .essay-subheading {
@@ -421,21 +476,6 @@ span.author {
 .orange-header .essay-subheading {
 	font-family: var(--accent-typeface);
 	text-transform: uppercase;
-}
-
-.essay-subsection > p {
-	background-color: var(--text-background);
-	border-radius: var(--medium-radius);
-	padding: var(--paragraph-spacing);
-	margin-block-end: var(--paragraph-spacing);
-	font-family: var(--primary-typeface);
-	font-size: var(--body-txt);
-	line-height:var(--relaxed-leading);
-
-	/* @media (min-width: 768px) {
-		&:font-size: var(--heading);
-		}
-	} */
 }
 
 /*strikethrough block*/
