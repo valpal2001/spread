@@ -606,3 +606,31 @@ span.author {
 /* Desktop */
 @media (min-width: 1200px) {
 }
+
+/* Print */
+@page {
+	margin: 0.5in; /* Prevent default/additional print spacing. */
+	size: letter;
+}
+@media print {
+	nav, #top, a {
+	display: none;
+}
+body {
+	print-color-adjust: exact;
+}
+.essay-header {
+	/* break-before: page; */
+	break-after: avoid;
+	}
+.pullquote, .strikeblock, .endcards {
+		break-inside: avoid;
+	}
+
+.essay-subsection > p {
+		orphans: 3;
+		widows: 3;
+	}
+	/* an orphan is the first line of a paragraph that appears alone at the bottom of a page. (The paragraph continues on a following page.) */
+	 /* a widow is the last line of a paragraph that appears alone at the top of a page. (The paragraph is continued from a prior page.) */
+}
