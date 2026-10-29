@@ -89,7 +89,7 @@ body {
 	color: var(--primary-black);
 	font-family: var(--primary-typeface);
 
-	@media (min-width> 768px px) {
+	@media (min-width> 768px) {
 		max-inline-size: var(--page-max-laptop);
 	}
 }
@@ -102,7 +102,7 @@ nav details {
 	font-family: var(--primary-typeface);
 	font-size: var(--label-txt);
 
-	@media (min-width> 768px px) {
+	@media (min-width> 768px) {
 		font-size: calc(1.5*var(--label-txt));
 		&:hover {
 			color: var(--primary-blue);
@@ -180,7 +180,7 @@ nav details[open] .triangle {
 	font-family: var(--heading-typeface);
 	line-height: var(--extraloose-leading);
 
-	@media (min-width> 768px px) {
+	@media (min-width> 768px) {
 		font-size: calc(1.2*var(--accent-header));
 		line-height: calc(1.2*var(--extraloose-leading));
 	}
@@ -191,7 +191,7 @@ h1 {
 	font-family: var(--accent-typeface);
 	font-size: var(--accent-body);
 
-	@media (min-width> 768px px) {
+	@media (min-width> 768px) {
 		font-size: calc(1.5*var(--accent-body));
 	}
 }
@@ -215,7 +215,7 @@ h3 {
 a {
 	text-decoration: underline;
 
-	@media (min-width>768 px) {
+	@media (min-width>768px) {
 		&:hover {
 			color: var(--primary-blue);
 		}
@@ -316,7 +316,7 @@ span.author {
 	text-align: center;
 	padding: var(--section-spacing);
 
-	@media (min-width>768 px) {
+	@media (min-width>768px) {
 		font-size: var(--accent-body);
 	}
 }
