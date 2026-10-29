@@ -583,6 +583,15 @@ span.author {
 	margin-block: calc(1.5 * var(--section-spacing));
 }
 
+/*remove margin from the strikeblocks that sit on top of subsections*/
+.strikeblock:has(+ .essay-subsection) {
+	margin-block-start: calc(2 * var(--section-spacing));
+	margin-block-end: var(--section-spacing);
+}
+
+.essay-subsection .strikeblock:last-child {
+	margin-block-end: 0;
+}
 
 .strikeblock del {
 	position: relative;
