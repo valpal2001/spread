@@ -18,7 +18,7 @@
 --heading-typeface:'Anton',sans-serif;
 --primary-typeface:'DM Sans',sans-serif;
 --secondary-typeface:'Bricolage Grotesque',sans-serif;
---metadata-typeface: 'DM Sans', sans-serif;
+--metadata-typeface:var(--primary-typeface);
 --accent-typeface:'Permanent Marker', cursive;
 
 /* Textsizes */
@@ -58,16 +58,14 @@
 
 /* leading */
 --regular-leading: calc(2*var(--basetext));
---tight-leading: calc(var(--regular-leading)/1.5);
 --relaxed-leading: calc(2*var(--regular-leading));
---open-leading: calc(1.5 * var(--relaxed-leading));
+--open-leading: calc(1.5*var(--relaxed-leading));
 --loose-leading: calc(2*var(--relaxed-leading));
 --extraloose-leading: calc(1.5*var(--loose-leading));
 
 /* Radius */
 --small-radius:1rem;
 --medium-radius: calc(2*var(--small-radius));
---large-radius: calc(2*var(--medium-radius));
 }
 
 body {
@@ -83,6 +81,7 @@ body {
 	}
 }
 
+/* Top nav */
 nav details {
 	background-color: var(--primary-white);
 	border-radius: var(--small-radius);
@@ -111,8 +110,6 @@ nav summary {
 
 ol.tableofcontents {
 	padding: var(--paragraph-spacing);
-	/* margin-block-end: var(--paragraph-spacing); */
-	/* Why is the space below not showing up */
 }
 
 .contentslabel {
@@ -142,9 +139,27 @@ nav details[open] .triangle {
 	transform: rotate(90deg);
 }
 
-
-
 /* Main heading */
+h1 {
+	grid-column: 1;
+	grid-row: 2;
+	justify-self: start;
+	align-self: center;
+	z-index: 1;
+	rotate: -8deg;
+	color: var(--primary-orange);
+	font-family: var(--accent-typeface);
+	font-size: var(--accent-body);
+	/* text-shadow: 2rem 0.5rem 0 var(--primary-black) 50%; */
+	/* text-shadow: 0.2rem 0.1rem 0.3rem color-mix(in srgb, var(--primary-black) 50%, transparent); */
+	text-shadow: 0.2rem 0.2rem 0.3rem rgb(0 0 0 / 50%);
+	/* Couldnt write this any other way */
+
+	@media (min-width: 768px) {
+		font-size: calc(1.5*var(--accent-body));
+	}
+}
+
 .titleblock {
 	background-color: var(--primary-blue);
 	border-radius: var(--medium-radius);
@@ -176,22 +191,6 @@ nav details[open] .triangle {
 	@media (min-width: 768px) {
 		font-size: calc(1.2*var(--accent-header));
 		line-height: calc(1.2*var(--extraloose-leading));
-	}
-}
-
-h1 {
-	grid-column: 1;
-	grid-row: 2;
-	justify-self: start;
-	align-self: center;
-	z-index: 1;
-	rotate: -8deg;
-	color: var(--primary-orange);
-	font-family: var(--accent-typeface);
-	font-size: var(--accent-body);
-
-	@media (min-width: 768px) {
-		font-size: calc(1.5*var(--accent-body));
 	}
 }
 
@@ -231,11 +230,6 @@ cite {
 	font-weight: var(--semibold-wt);
 }
 
-li.reference {
-	list-style-type: decimal;
-	list-style-position: inside;
-}
-
 em {
 	font-style: italic;
 }
@@ -248,50 +242,492 @@ span.author {
 	font-weight: var(--extrabold-wt);
 }
 
+li.reference {
+	list-style-type: decimal;
+	list-style-position:inside;
+}
+
 .reference-list {
 	background-color: var(--text-background);
 	border-radius: var(--medium-radius);
 	padding: var(--paragraph-spacing);
+	/* list-style-position: inside; */
 }
 
-/* Metadata */
+/* Header and Metadata */
+header {
+	@media (min-width: 768px) {
+		display: flex;
+		gap: var(--paragraph-spacing);
+	}
+}
+
 .titlecards {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: var(--paragraph-spacing);
+
+	@media (min-width: 768px) {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		flex-basis: 0;
+		/* this is where i learned about how to make the cards the right width: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-basis */
+	}
+
+	> div {
+		padding: var(--paragraph-spacing);
+		align-items: center;
+	}
+
+	.response,.authorheading {
+		font-family: var(--secondary-typeface);
+		font-weight: var(--extrabold-wt);
+	}
+
+	.authorheading,.codedby, .response {
+		border-radius: var(--small-radius);
+	}
+
+	.response {
+		grid-column: span 2;
+		background-color: var(--primary-orange);
+		/* border-radius: var(--medium-radius); */
+		font-size: var(--metadata-txt);
+
+		@media (min-width: 768px) {
+			border-radius: var(--medium-radius);
+		}
+	}
+
+	.authorheading {
+		background-color: var(--primary-yellow);
+	}
+
+	.codedby {
+		background-color: var(--primary-blue);
+		color: var(--primary-white);
+	}
 }
 
-.titlecards > div {
-	padding: var(--paragraph-spacing);
-	align-items: center;
-	/* border-radius: var(--medium-radius); */
+/* Attempt at code hygyine for the "end of webpage section" */
+.endcards {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	gap: var(--paragraph-spacing);
+	margin-block-start: var(--section-spacing);
 }
 
-.response {
-	background-color: var(--primary-orange);
-	grid-column: span 2;
-	font-family: var(--secondary-typeface);
-	font-weight: var(--extrabold-wt);
-	font-size: var(--metadata-txt);
-	border-radius: var(--medium-radius);
+.closing-quote, #top, .related-link, .previous-website {
+	align-content: center;
+	text-align: center;
 }
 
-.authorheading {
-	background-color: var(--primary-yellow);
-	font-family: var(--secondary-typeface);
-	font-weight: var(--extrabold-wt);
-	border-radius: var(--small-radius);
-}
-
-.codedby {
+.closing-quote, #top {
 	background-color: var(--primary-blue);
 	color: var(--primary-white);
-	font-family: var(--primary-typeface);
-	border-radius:var(--small-radius);
 }
 
-/* End of the webpage attempt 1 */
+#top, .related-link, .previous-website {
+	border-radius: var(--small-radius);
+	padding: var(--paragraph-spacing);
+	font-weight: var(--bold-wt);
+	font-size: var(--label-txt);
 
+	@media (min-width: 768px) {
+		font-size: var(--body-txt);
+	}
+}
+
+.closing-quote {
+	grid-column: span 3;
+	grid-row: span 2;
+	border-radius: var(--medium-radius);
+	padding: var(--section-spacing);
+	text-transform: uppercase;
+	font-family: var(--heading-typeface);
+	font-weight: var(--bold-wt);
+	font-size: var(--heading);
+	line-height: var(--open-leading);
+
+	@media (min-width: 768px) {
+		grid-column: span 2;
+		grid-row: span 3;
+		font-size: var(--accent-body);
+		line-height: calc(1.2*var(--loose-leading));
+	}
+}
+
+.closing-quote > span {
+	font-family: var(--accent-typeface);
+	color: var(--primary-orange);
+}
+
+#top {
+	text-decoration: none;
+}
+
+.related-link {
+	background-color: var(--primary-yellow);
+	font-family: var(--secondary-typeface);
+}
+
+.previous-website {
+	background-color: var(--primary-orange);
+	color: var(--primary-black);
+}
+
+/* Nested Introduction */
+.essay-header {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--paragraph-spacing);
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(5, 1fr);
+	}
+	.essay-number,
+	.essay-subheading {
+		background-color: var(--primary-orange);
+		border-radius: var(--medium-radius);
+		padding: var(--paragraph-spacing);
+		margin-block-end: var(--paragraph-spacing);
+		font-family: var(--secondary-typeface);
+		align-content: center;
+		text-align: center;
+	}
+	.essay-number {
+		font-size: var(--number-txt);
+		font-weight: var(--extrabold-wt);
+
+		@media (min-width: 768px) {
+			grid-column: span 2;
+			font-size: calc(1.5 * var(--number-txt));
+		}
+	}
+	.essay-subheading {
+		grid-column: span 2;
+		font-size: var(--subheading);
+		font-weight: var(--bold-wt);
+
+		@media (min-width: 768px) {
+			grid-column: span 3;
+			font-size: calc(1.5 * var(--subheading));
+		}
+	}
+}
+
+
+.pullquote {
+	/* background-color: var(--primary-white); */
+	border-color: var(--primary-blue);
+	border-width: calc(var(--basetext)/2);
+	border-style: solid;
+	color:var(--primary-black);
+	padding: var(--paragraph-spacing);
+	border-radius: var(--medium-radius);
+	margin-block-start: var(--paragraph-spacing);
+	margin-block-end: var(--paragraph-spacing);
+}
+
+.pullquote > blockquote {
+	font-family: var(--secondary-typeface);
+	font-size: var(--quotation-txt);
+	color: var(--primary-blue);
+}
+
+.pullquote > p {
+	margin-block-end: var(--paragraph-spacing);
+	color: var(--primary-blue);
+}
+
+.essay-subsection > p {
+	background-color: var(--text-background);
+	border-radius: var(--medium-radius);
+	padding: var(--paragraph-spacing);
+	margin-block-end: var(--paragraph-spacing);
+	font-family: var(--primary-typeface);
+	font-size: var(--body-txt);
+	line-height:var(--relaxed-leading);
+
+	@media (min-width:768px) {
+		font-size: calc(1.1*var(--body-txt));
+	}
+
+}
+
+/* This is to change the colours of the subheading blocks */
+.blue-header .essay-number,
+.blue-header .essay-subheading {
+	background-color: var(--primary-blue);
+	color: var(--primary-white);
+	margin-block-start: var(--section-spacing);
+
+}
+
+.yellow-header .essay-number,
+.yellow-header .essay-subheading {
+	background-color: var(--primary-yellow);
+	color: var(--primary-black);
+	margin-block-start: var(--section-spacing);
+}
+
+.orange-header .essay-number,
+.orange-header .essay-subheading {
+	background-color: var(--primary-orange);
+	color: var(--primary-black);
+	margin-block-start: var(--section-spacing);
+}
+
+.blue-header .essay-subheading,
+.yellow-header .essay-subheading,
+.orange-header .essay-subheading {
+	font-family: var(--accent-typeface);
+	text-transform: uppercase;
+}
+
+/*strikethrough block*/
+.strikeblock {
+	--del-size: var(--accent-body);
+	--ins-size: var(--subheading);
+	--strike-angle: -1deg;
+	--align: center;
+
+	display: grid;
+	justify-items: var(--align);
+	gap: var(--paragraph-spacing);
+	/* margin-block: var(--section-spacing); */
+	/* TO BE FIXED: the spacing doubles when it comes above a subheading */
+	text-align: var(--align);
+	text-transform: uppercase;
+
+	@media (width > 768px) {
+		--del-size: var(--accent-body);
+		--ins-size: var(--heading);
+	}
+
+	@media (width > 1200px) {
+		--del-size: var(--accent-header);
+		--ins-size: var(--accent-body);
+	}
+}
+
+.essay-subsection .strikeblock {
+	margin-block: calc(1.5*var(--section-spacing));
+}
+
+/*remove margin from the strikeblocks that sit on top of subsections*/
+.strikeblock:has(+ .essay-subsection) {
+	margin-block-start: calc(2*var(--section-spacing));
+	margin-block-end: var(--section-spacing);
+}
+
+.essay-subsection .strikeblock:last-child {
+	margin-block-end: 0;
+}
+
+.strikeblock del {
+	position: relative;
+	display: inline-block;
+	white-space: nowrap;
+	text-box: trim-both cap alphabetic;
+	text-decoration: none;
+	font-family: var(--heading-typeface);
+	color: var(--primary-blue);
+	font-size: var(--del-size);
+}
+
+.strikeblock del::after {
+	content: "";
+	position: absolute;
+	inset-inline-start: calc(-1*var(--del-size) / 12);
+	inset-inline-end: calc(-1*var(--del-size) / 12);
+	inset-block-start: 50%;
+	block-size: var(--basetext);
+	background-color: var(--strike-red);
+	rotate: -1deg;
+}
+
+.strikeblock ins {
+	display: inline-block;
+	text-box: trim-both cap alphabetic;
+	text-decoration: none;
+	font-family: var(--accent-typeface);
+	color: var(--primary-orange);
+	font-size: var(--ins-size);
+	line-height: calc(1.2*var(--ins-size));
+	text-wrap: balance;
+	max-inline-size: 30ch;
+
+	/* @media (width> 768px) {
+		font-size: var(--accent-body);
+	 	} */
+	}
+
+.strikeblock--long-ins {
+	--ins-size: var(--label-txt);
+	gap: calc(2*var(--paragraph-spacing));
+
+	ins {
+		max-inline-size: 100%;
+	}
+
+	@media (width > 768px) {
+		--ins-size: var(--body-txt);
+	}
+
+	@media (width > 1200px) {
+		--ins-size: var(--subheading);
+	}
+}
+
+.strikeblock--long-del {
+	--del-size: var(--heading);
+
+	@media (width > 768px) {
+		--del-size: var(--accent-body);
+	}
+
+	@media (width > 1200px) {
+		--del-size: var(--accent-header);
+	}
+}
+
+.strikeblock--one-word {
+	--del-size: var(--accent-body);
+	--strike-angle: -6deg;
+
+	@media (width > 768px) {
+		--del-size: var(--accent-header);
+	}
+
+	@media (width > 1200px) {
+		--del-size: calc(1.5*var(--accent-header));
+	}
+}
+
+@media (min-width: 768px) {
+	header {
+		display: flex;
+		gap: var(--paragraph-spacing);
+	}
+
+	.titleblock {
+		flex-grow: 2;
+		flex-basis: 0;
+	}
+
+	.titlecards {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		flex-basis: 0;
+		/* this is where i learned about how to make the cards the right width: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-basis*/
+	}
+}
+
+/* Desktop */
+@page {
+	margin: 0.5in; /* Prevent default/additional print spacing. */
+	size: letter;
+}
+
+@media print {
+	:root {
+		--basetext: 5pt;
+		--primary-blue: var(--primary-black);
+		--primary-orange: var(--primary-black);
+		--strike-red: var(--primary-black);
+		--text-background: transparent;
+		--background: var(--primary-white);
+	}
+
+	nav, #top, .related-link, .previous-website {
+		display: none;
+	}
+
+	.essay-subsection > p {
+		padding-inline: 0;
+		border-radius: 0;
+		hyphens: auto;
+		/* an orphan is the first line of a paragraph that appears alone at the bottom of a page. (The paragraph continues on a following page.) */
+		orphans: 3;
+		/* a widow is the last line of a paragraph that appears alone at the top of a page. (The paragraph is continued from a prior page.) */
+		widows: 3;
+	}
+
+	.essay-subsection .essay-number,
+	.essay-subsection .essay-subheading,
+	.closing-quote {
+		background-color: transparent;
+		color: var(--primary-black);
+		border-width: calc(var(--basetext)/2);
+		border-style: solid;
+		border-color: var(--primary-black);
+	}
+
+	h2, .closing-quote {
+		text-wrap: balance;
+	}
+
+
+	.essay-header {
+		/* break-before: page; */
+		break-after: avoid;
+	}
+
+	.pullquote, .strikeblock, .endcards {
+		break-inside: avoid;
+	}
+}
+
+
+/* Introduction attempt 1*/
+/* .essay-subsection .essay-header {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap:var(--paragraph-spacing);
+
+	@media (min-width:768px) {
+		grid-template-columns: repeat(5, 1fr);
+	}
+} */
+
+/* .essay-subsection .essay-number,
+.essay-subsection .essay-subheading {
+	background-color: var(--primary-orange);
+	border-radius: var(--medium-radius);
+	padding: var(--paragraph-spacing);
+	font-family: var(--secondary-typeface);
+	align-content: center;
+	text-align: center;
+	margin-block-end: var(--paragraph-spacing);
+} */
+
+/* .essay-subsection .essay-number {
+	font-size: var(--number-txt);
+	font-weight: var(--extrabold-wt);
+	grid-column: span 1;
+
+	@media (min-width:768px) {
+		grid-column: span 2;
+		font-size: calc(1.5*var(--number-txt));
+	}
+} */
+
+/* .essay-subsection .essay-subheading {
+	font-size: var(--subheading);
+	font-weight: var(--bold-wt);
+	grid-column: span 2;
+
+	@media (min-width:768px) {
+		grid-column: span 3;
+		font-size: calc(1.5*var(--subheading));
+	}
+} */
+
+/* End of the webpage attempt 1 */
 /* .endcards {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -380,381 +816,3 @@ span.author {
 		font-size: var(--body-txt);
 	}
 } */
-
-/* Attempt at code hygyine for the end of website section */
-.endcards {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(3, 1fr);
-	gap: var(--paragraph-spacing);
-	margin-block-start: var(--section-spacing);
-}
-
-.closing-quote, #top, .related-link, .previous-website {
-	align-content: center;
-	text-align: center;
-}
-
-.closing-quote, #top {
-	background-color: var(--primary-blue);
-	color: var(--primary-white);
-}
-
-#top, .related-link, .previous-website {
-	border-radius: var(--small-radius);
-	padding: var(--paragraph-spacing);
-	font-weight: var(--bold-wt);
-	font-size: var(--label-txt);
-
-	@media (min-width: 768px) {
-		font-size: var(--body-txt);
-	}
-}
-
-.closing-quote {
-	grid-column: span 3;
-	grid-row: span 2;
-	border-radius: var(--medium-radius);
-	padding: var(--section-spacing);
-	text-transform: uppercase;
-	font-family: var(--heading-typeface);
-	font-weight: var(--bold-wt);
-	font-size: var(--heading);
-	line-height: var(--open-leading);
-
-	@media (min-width: 768px) {
-		grid-column: span 2;
-		grid-row: span 3;
-		font-size: var(--accent-body);
-		line-height: calc(1.2 * var(--loose-leading));
-	}
-}
-
-.closing-quote > span {
-	font-family: var(--accent-typeface);
-	color: var(--primary-orange);
-}
-
-#top {
-	text-decoration: none;
-}
-
-.related-link {
-	background-color: var(--primary-yellow);
-	font-family: var(--secondary-typeface);
-}
-
-.previous-website {
-	background-color: var(--primary-orange);
-	color: var(--primary-black);
-}
-
-
-/* Introduction */
-.essay-subsection .essay-header {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap:var(--paragraph-spacing);
-
-	@media (min-width:768px) {
-		grid-template-columns: repeat(5, 1fr);
-	}
-}
-
-.essay-subsection .essay-number,
-.essay-subsection .essay-subheading {
-	background-color: var(--primary-orange);
-	border-radius: var(--medium-radius);
-	padding: var(--paragraph-spacing);
-	font-family: var(--secondary-typeface);
-	align-content: center;
-	text-align: center;
-	margin-block-end: var(--paragraph-spacing);
-}
-
-.essay-subsection .essay-number {
-	font-size: var(--number-txt);
-	font-weight: var(--extrabold-wt);
-	grid-column: span 1;
-
-	@media (min-width:768px) {
-		grid-column: span 2;
-		font-size: calc(1.5*var(--number-txt));
-	}
-}
-
-
-.essay-subsection .essay-subheading {
-	font-size: var(--subheading);
-	font-weight: var(--bold-wt);
-	grid-column: span 2;
-
-	@media (min-width:768px) {
-		grid-column: span 3;
-		font-size: calc(1.5*var(--subheading));
-	}
-}
-
-.pullquote {
-	/* background-color: var(--primary-white); */
-	border-color: var(--primary-blue);
-	border-width: calc(var(--basetext)/2);
-	border-style: solid;
-	color:var(--primary-black);
-	padding: var(--paragraph-spacing);
-	border-radius: var(--medium-radius);
-	margin-block-start: var(--paragraph-spacing);
-	margin-block-end: var(--paragraph-spacing);
-}
-
-.pullquote > blockquote {
-	font-family: var(--secondary-typeface);
-	font-size: var(--quotation-txt);
-	color: var(--primary-blue);
-}
-
-.pullquote > p {
-	margin-block-end: var(--paragraph-spacing);
-	color: var(--primary-blue);
-}
-
-.essay-subsection > p {
-	background-color: var(--text-background);
-	border-radius: var(--medium-radius);
-	padding: var(--paragraph-spacing);
-	margin-block-end: var(--paragraph-spacing);
-	font-family: var(--primary-typeface);
-	font-size: var(--body-txt);
-	line-height:var(--relaxed-leading);
-
-	@media (min-width:768px) {
-		font-size: calc(1.1*var(--body-txt));
-	}
-
-}
-
-/* This is to change the colours of the subheading blocks */
- .blue-header .essay-number,
-.blue-header .essay-subheading {
-	background-color: var(--primary-blue);
-	color: var(--primary-white);
-	margin-block-start: var(--section-spacing);
-
-}
-
-.yellow-header .essay-number,
-.yellow-header .essay-subheading {
-	background-color: var(--primary-yellow);
-	color: var(--primary-black);
-	margin-block-start: var(--section-spacing);
-}
-
-.orange-header .essay-number,
-.orange-header .essay-subheading {
-	background-color: var(--primary-orange);
-	color: var(--primary-black);
-	margin-block-start: var(--section-spacing);
-}
-
-.blue-header .essay-subheading,
-.yellow-header .essay-subheading,
-.orange-header .essay-subheading {
-	font-family: var(--accent-typeface);
-	text-transform: uppercase;
-}
-
-/*strikethrough block*/
-.strikeblock {
-	--del-size: var(--accent-body);
-	--ins-size: var(--subheading);
-	--strike-angle: -1deg;
-	--align: center;
-
-	display: grid;
-	justify-items: var(--align);
-	gap: var(--paragraph-spacing);
-	/* margin-block: var(--section-spacing); */
-	/* TO BE FIXED: the spacing doubles when it comes above a subheading */
-	text-align: var(--align);
-	text-transform: uppercase;
-
-	@media (width > 768px) {
-		--del-size: var(--accent-body);
-		--ins-size: var(--heading);
-	}
-
-	@media (width > 1200px) {
-		--del-size: var(--accent-header);
-		--ins-size: var(--accent-body);
-	}
-}
-
-.essay-subsection .strikeblock {
-	margin-block: calc(1.5 * var(--section-spacing));
-}
-
-/*remove margin from the strikeblocks that sit on top of subsections*/
-.strikeblock:has(+ .essay-subsection) {
-	margin-block-start: calc(2 * var(--section-spacing));
-	margin-block-end: var(--section-spacing);
-}
-
-.essay-subsection .strikeblock:last-child {
-	margin-block-end: 0;
-}
-
-.strikeblock del {
-	position: relative;
-	display: inline-block;
-	white-space: nowrap;
-	text-box: trim-both cap alphabetic;
-	text-decoration: none;
-	font-family: var(--heading-typeface);
-	color: var(--primary-blue);
-	font-size: var(--del-size);
-}
-
-.strikeblock del::after {
-	content: "";
-	position: absolute;
-	inset-inline-start: calc(-1 * var(--del-size) / 12);
-	inset-inline-end: calc(-1 * var(--del-size) / 12);
-	inset-block-start: 50%;
-	block-size: var(--basetext);
-	background-color: var(--strike-red);
-	rotate: -1deg;
-}
-
-.strikeblock ins {
-	display: inline-block;
-	text-box: trim-both cap alphabetic;
-	text-decoration: none;
-	font-family: var(--accent-typeface);
-	color: var(--primary-orange);
-	font-size: var(--ins-size);
-	line-height: calc(1.2*var(--ins-size));
-	text-wrap: balance;
-	max-inline-size: 30ch;
-
-	/* @media (width> 768px) {
-		font-size: var(--accent-body);
-	 	} */
-	}
-
-.strikeblock--long-ins {
-	--ins-size: var(--label-txt);
-	gap: calc(2 * var(--paragraph-spacing));
-
-	ins {
-		max-inline-size: 100%;
-	}
-
-	@media (width > 768px) {
-		--ins-size: var(--body-txt);
-	}
-
-	@media (width > 1200px) {
-		--ins-size: var(--subheading);
-	}
-}
-
-.strikeblock--long-del {
-	--del-size: var(--heading);
-
-	@media (width > 768px) {
-		--del-size: var(--accent-body);
-	}
-
-	@media (width > 1200px) {
-		--del-size: var(--accent-header);
-	}
-}
-
-.strikeblock--one-word {
-	--del-size: var(--accent-body);
-	--strike-angle: -6deg;
-
-	@media (width > 768px) {
-		--del-size: var(--accent-header);
-	}
-
-	@media (width > 1200px) {
-		--del-size: calc(1.5 * var(--accent-header));
-	}
-}
-
-@media (min-width: 768px) {
-	header {
-		display: flex;
-		gap: var(--paragraph-spacing);
-	}
-
-	.titleblock {
-		flex-grow: 2;
-		flex-basis: 0;
-	}
-
-	.titlecards {
-		display: flex;
-		flex-direction: column;
-		flex-grow: 1;
-		flex-basis: 0;
-		/* this is where i learned about how to make the cards the right width: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-basis*/
-	}
-}
-
-/* Desktop */
-@page {
-	margin: 0.5in; /* Prevent default/additional print spacing. */
-	size: letter;
-}
-
-@media print {
-	:root {
-		--basetext: 5pt;
-		--primary-blue: var(--primary-black);
-		--primary-orange: var(--primary-black);
-		--strike-red: var(--primary-black);
-		--text-background: transparent;
-		--background: var(--primary-white);
-	}
-
-	nav, #top, .related-link, .previous-website {
-		display: none;
-	}
-
-	.essay-subsection > p {
-		padding-inline: 0;
-		border-radius: 0;
-		hyphens: auto;
-		/* an orphan is the first line of a paragraph that appears alone at the bottom of a page. (The paragraph continues on a following page.) */
-		orphans: 3;
-		/* a widow is the last line of a paragraph that appears alone at the top of a page. (The paragraph is continued from a prior page.) */
-		widows: 3;
-	}
-
-	.essay-subsection .essay-number,
-	.essay-subsection .essay-subheading,
-	.closing-quote {
-		background-color: transparent;
-		color: var(--primary-black);
-		border-width: calc(var(--basetext) / 2);
-		border-style: solid;
-		border-color: var(--primary-black);
-	}
-
-	h2, .closing-quote {
-		text-wrap: balance;
-	}
-
-
-	.essay-header {
-		/* break-before: page; */
-		break-after: avoid;
-	}
-
-	.pullquote, .strikeblock, .endcards {
-		break-inside: avoid;
-	}
-}
-
