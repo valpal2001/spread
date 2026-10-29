@@ -555,7 +555,7 @@ span.author {
 
 /*strikethrough block*/
 .strikeblock {
-	--del-size: var(--heading);
+	--del-size: var(--accent-body);
 	--ins-size: var(--subheading);
 	--strike-angle: -1deg;
 	--align: center;
@@ -636,6 +636,18 @@ span.author {
 
 	@media (width > 1200px) {
 		--ins-size: var(--subheading);
+	}
+}
+
+.strikeblock--long-del {
+	--del-size: var(--heading);
+
+	@media (width > 768px) {
+		--del-size: var(--accent-body);
+	}
+
+	@media (width > 1200px) {
+		--del-size: var(--accent-header);
 	}
 }
 
