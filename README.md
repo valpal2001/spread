@@ -40,7 +40,7 @@ The permanent Marker carries the main idea. Good design comes from paying attent
 
 ### AI chat links
 
-Here is the link to Charitaa's Chat log: https://chatgpt.com/share/6ada6627-0cc4-83e9-9c77-fa31dc50a0aa
+Here is the link to Charitaa's Chat log: https://chatgpt.com/c/6ad785bc-07d0-83e9-a6b9-3a607b9838c8
 
 Here is the link to Valerie's Claude chat log: https://claude.ai/share/d9b63640-a0b2-4bf9-8f89-7f910eec6289
 
